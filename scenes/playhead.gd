@@ -24,4 +24,5 @@ func _process(delta):
 	
 	for watched_angle in angles_to_watch_degrees:
 		if old_angle < watched_angle and watched_angle <= new_angle:
-			angle_passed.emit(watched_angle)
+			# rotate to be number of degrees clockwise from north
+			angle_passed.emit((watched_angle + 270) % 360)
