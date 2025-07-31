@@ -6,10 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
 size = Vector2(30, 42)
 
-[node name="enemy" type="Area2D"]
+[node name="enemy" type="Area2D" groups=["enemies"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_8e3ao")
+speed = 25.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0258621, 0.0258621)
@@ -18,3 +19,11 @@ hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7p1mj")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -15.0
+offset_top = 22.0
+offset_right = 15.0
+offset_bottom = 28.0
+step = 1.0
+show_percentage = false
