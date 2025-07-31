@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnfg0lsaswnvl"]
 
-[ext_resource type="Script" uid="uid://cly6o2peh25rs" path="res://drum_turret.gd" id="1_hwltp"]
+[ext_resource type="Script" uid="uid://cly6o2peh25rs" path="res://scenes/drum_turret.gd" id="1_hwltp"]
 [ext_resource type="Texture2D" uid="uid://cxsw70cq7jww4" path="res://assets/drum_turret.png" id="2_vuxha"]
 
 [node name="DrumTurret" type="Node2D"]
