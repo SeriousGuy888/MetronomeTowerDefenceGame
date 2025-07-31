@@ -1,19 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://brx4osyxy8w0t"]
 
 [ext_resource type="Texture2D" uid="uid://d3jlkvi2u272i" path="res://assets/music_note.png" id="1_7p1mj"]
-
-[sub_resource type="GDScript" id="GDScript_7p1mj"]
-script/source = "extends Area2D
-
-@export var speed = 50.0
-
-func _process(delta):
-	var direction_to_center = global_position.direction_to(Vector2.ZERO)
-	position += direction_to_center * speed * delta
-
-func take_damage():
-	queue_free()
-"
+[ext_resource type="Script" uid="uid://fynacqjwcccl" path="res://scenes/enemies/enemy.gd" id="1_8e3ao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
 size = Vector2(30, 42)
@@ -21,7 +9,7 @@ size = Vector2(30, 42)
 [node name="enemy" type="Area2D"]
 collision_layer = 8
 collision_mask = 0
-script = SubResource("GDScript_7p1mj")
+script = ExtResource("1_8e3ao")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0258621, 0.0258621)

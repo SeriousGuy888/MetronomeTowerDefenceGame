@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf8v7ehjh6hk1"]
+
+[ext_resource type="Script" uid="uid://fynacqjwcccl" path="res://scenes/enemies/enemy.gd" id="1_w6keq"]
+[ext_resource type="Texture2D" uid="uid://d3jlkvi2u272i" path="res://assets/music_note.png" id="2_8t2vn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
+size = Vector2(44, 42)
+
+[node name="enemy" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_w6keq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0258621, 0.0258621)
+texture = ExtResource("2_8t2vn")
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_7p1mj")
