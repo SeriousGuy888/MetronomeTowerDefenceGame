@@ -58,17 +58,9 @@ enemy_container = NodePath("../EnemyContainer")
 [node name="PlaythroughManager" type="Node" parent="."]
 script = ExtResource("8_choun")
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
-mouse_filter = 2
+[node name="UI" type="CanvasLayer" parent="."]
 
 [node name="TurretShop" parent="UI" instance=ExtResource("5_tbgi4")]
-layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -79,7 +71,6 @@ offset_bottom = 0.0
 grow_vertical = 0
 
 [node name="CoinHUD" type="Panel" parent="UI"]
-layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
