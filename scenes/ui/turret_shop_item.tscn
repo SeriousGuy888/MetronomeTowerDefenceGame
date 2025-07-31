@@ -6,8 +6,6 @@ script/source = "extends HBoxContainer
 @export var id = \"\"
 @export var title = \"Shop Item\"
 
-signal on_purchase(id: String)
-
 func _ready() -> void:
 	$Title.text = title
 

@@ -41,6 +41,7 @@ func _on_turret_purchase(item_id: String) -> void:
 	
 	if item_id == \"none\":
 		selected_slot.remove_turret()
+		return
 	
 	var turret_type = turret_ids.get(item_id)
 	if !turret_type:
