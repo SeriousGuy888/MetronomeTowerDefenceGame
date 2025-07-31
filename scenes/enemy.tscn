@@ -16,7 +16,7 @@ func take_damage():
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
-size = Vector2(48, 74)
+size = Vector2(30, 42)
 
 [node name="enemy" type="Area2D"]
 collision_layer = 8
@@ -24,7 +24,7 @@ collision_mask = 0
 script = SubResource("GDScript_7p1mj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0626249, 0.0626249)
+scale = Vector2(0.0258621, 0.0258621)
 texture = ExtResource("1_7p1mj")
 hframes = 5
 
