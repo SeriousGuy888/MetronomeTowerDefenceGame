@@ -22,6 +22,6 @@ func _process(delta):
 	if new_angle < old_angle:
 		old_angle -= 360 # to deal with when the playhead crosses 0°
 	
-	for angle in angles_to_watch_degrees:
-		if old_angle < angle and angle < new_angle:
-			angle_passed.emit(angle)
+	for watched_angle in angles_to_watch_degrees:
+		if old_angle < watched_angle and watched_angle <= new_angle:
+			angle_passed.emit(watched_angle)
