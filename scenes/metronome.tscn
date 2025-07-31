@@ -10,11 +10,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhbrk"]
 radius = 84.0
 
-[node name="metronome" type="RigidBody2D"]
+[node name="metronome" type="RigidBody2D" node_paths=PackedStringArray("turret_slot_manager")]
 collision_layer = 2
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_qls4i")
+turret_slot_manager = NodePath("TurretSlotManager")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)

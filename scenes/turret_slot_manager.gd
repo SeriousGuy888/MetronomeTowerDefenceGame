@@ -6,6 +6,8 @@ extends Node
 ]
 @export var radius = 100
 
+var slots: Dictionary = {}
+
 func _ready():
 	spawn_turret_slots()
 
@@ -14,4 +16,14 @@ func spawn_turret_slots():
 		var angle = Vector2.from_angle(deg_to_rad(angle_deg))
 		var slot: Node2D = turret_slot_scene.instantiate()
 		slot.position = angle * radius
+		slot.direction = angle
 		add_child(slot)
+		slots[angle_deg] = slot
+
+func fire(angle_deg: int):
+	print(angle_deg)
+	var slot = slots.get(angle_deg)
+	if !slot:
+		push_warning("Attempted to fire turret in slot at ", angle_deg, "degrees, but no such slot exists.")
+	
+	slot.fire()

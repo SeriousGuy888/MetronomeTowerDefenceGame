@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 @export var beats_per_minute: float = 120 # float not int, for subsecond calculations
+@export var turret_slot_manager: Node2D
 
 @onready var timer: Timer = $Timer
 
@@ -22,7 +23,8 @@ func fire_bullet(direction: Vector2):
 
 func _on_playhead_angle_passed(angle_in_degrees: Variant) -> void:
 	# angle is given as "degrees clockwise from north"
-	var angle = deg_to_rad(angle_in_degrees)
-	var direction = Vector2(sin(angle), -cos(angle))
-	fire_bullet(direction)
+	turret_slot_manager.fire(angle_in_degrees)
+	#var angle = deg_to_rad(angle_in_degrees)
+	#var direction = Vector2(sin(angle), -cos(angle))
+	#fire_bullet(direction)
 	#print(angle_in_degrees, direction)
