@@ -5,8 +5,6 @@ extends RigidBody2D
 
 @onready var timer: Timer = $Timer
 
-signal request_launch_projectile(direction: Vector2)
-
 var tick = 0
 
 func _ready():
@@ -17,14 +15,7 @@ func _on_timer_timeout() -> void:
 	tick += 1
 	timer.start()
 
-func fire_bullet(direction: Vector2):
-	request_launch_projectile.emit(direction)
-
 
 func _on_playhead_angle_passed(angle_in_degrees: Variant) -> void:
 	# angle is given as "degrees clockwise from north"
 	turret_slot_manager.fire(angle_in_degrees)
-	#var angle = deg_to_rad(angle_in_degrees)
-	#var direction = Vector2(sin(angle), -cos(angle))
-	#fire_bullet(direction)
-	#print(angle_in_degrees, direction)

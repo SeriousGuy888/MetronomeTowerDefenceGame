@@ -27,5 +27,3 @@ spawn_radius = 500.0
 [node name="MonsterSpawnClock" type="Timer" parent="MonsterSpawner"]
 wait_time = 5.0
 autostart = true
-
-[connection signal="request_launch_projectile" from="metronome" to="." method="_on_metronome_request_launch_projectile"]
