@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	translate(direction * 250 * delta)
-	
+	look_at(direction)
 	# temporary way to delete bullets once they're far away
 	if abs(position.x) > 2000 || abs(position.y) > 2000:
 		queue_free()
