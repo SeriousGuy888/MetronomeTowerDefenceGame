@@ -1,4 +1,4 @@
-extends Node2D
+class_name TurretSlot extends Node2D
 
 var turret: Turret = null
 
@@ -36,4 +36,4 @@ func fire():
 
 
 func _on_texture_button_button_up() -> void:
-	print("press")
+	EventBus.request_select_turret_slot.emit(self)
