@@ -12,14 +12,16 @@ var direction: Vector2:
 		_direction = value.normalized()
 
 # temporary for testing
-const DRUM_TURRET = preload("res://scenes/drum_turret.tscn")
+const TURRET_SCENE = preload("res://scenes/turrets/turret.tscn")
+const DRUM_TURRET = preload("res://resources/drum_turret.tres")
 func _ready():
-	place_turret(DRUM_TURRET)
+	place_turret(TURRET_SCENE, DRUM_TURRET)
 
-func place_turret(new_turret_scene: PackedScene):
+func place_turret(new_turret_scene: PackedScene, turret_type: TurretType):
 	remove_turret()
 	
 	turret = new_turret_scene.instantiate()
+	turret.turret_type = turret_type
 	add_child(turret)
 	
 func remove_turret():
