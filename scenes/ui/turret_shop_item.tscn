@@ -1,12 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://xmxcbety6uy6"]
 
 [sub_resource type="GDScript" id="GDScript_vb38a"]
-script/source = "extends HBoxContainer
+script/source = "@tool
+extends HBoxContainer
 
 @export var id = \"\"
-@export var title = \"Shop Item\"
+@export var title = \"Shop Item\":
+	get: return title
+	set(new_value):
+		title = new_value
+		update_label()
 
-func _ready() -> void:
+func update_label():
 	$Title.text = title
 
 func _on_purchase_button_pressed() -> void:
@@ -19,7 +24,7 @@ script = SubResource("GDScript_vb38a")
 [node name="Title" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "shop item"
+text = "Shop Item"
 
 [node name="spacer" type="Control" parent="."]
 layout_mode = 2
