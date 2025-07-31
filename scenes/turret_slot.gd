@@ -13,7 +13,7 @@ var direction: Vector2:
 
 # temporary for testing
 const TURRET_SCENE = preload("res://scenes/turrets/turret.tscn")
-const DRUM_TURRET = preload("res://resources/drum_turret.tres")
+const DRUM_TURRET = preload("res://resources/guitar_turret.tres")
 func _ready():
 	place_turret(TURRET_SCENE, DRUM_TURRET)
 
