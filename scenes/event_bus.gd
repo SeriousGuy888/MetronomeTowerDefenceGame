@@ -6,10 +6,14 @@ signal request_spawn_projectile(
 	spawn_position: Vector2, # global position
 	direction: Vector2)
 
-
+@warning_ignore("unused_signal")
 signal request_spawn_enemy(enemy_scene: PackedScene)
+
 @warning_ignore("unused_signal")
 signal request_select_turret_slot(turret_slot: TurretSlot)
 
 @warning_ignore("unused_signal")
 signal make_turret_purchase(shop_item_id: String)
+
+@warning_ignore("unused_signal")
+signal request_add_coins(amount: int)

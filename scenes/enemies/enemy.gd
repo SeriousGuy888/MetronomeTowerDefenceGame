@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed = 50.0
 @export var health = 1
+@export var coins_dropped = 3
 
 func _ready():
 	$HealthBar.max_value=health
@@ -21,4 +22,8 @@ func take_damage(damage_amount):
 	health -= damage_amount
 	set_health_bar()
 	if health <= 0:
-		queue_free()
+		die()
+
+func die():
+	EventBus.request_add_coins.emit(coins_dropped)
+	queue_free()
