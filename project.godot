@@ -14,3 +14,8 @@ config/name="MetronomeTowerDefence"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
+
+[layer_names]
+
+2d_physics/layer_3="bullets"
+2d_physics/layer_4="enemies"

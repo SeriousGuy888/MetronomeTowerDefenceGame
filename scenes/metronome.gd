@@ -14,8 +14,6 @@ func _ready():
 
 func _on_timer_timeout() -> void:
 	tick += 1
-	#print(tick)
-	#fire_bullet(Vector2(0, 1))
 	timer.start()
 
 func fire_bullet(direction: Vector2):
@@ -27,4 +25,4 @@ func _on_playhead_angle_passed(angle_in_degrees: Variant) -> void:
 	var angle = deg_to_rad(angle_in_degrees)
 	var direction = Vector2(sin(angle), -cos(angle))
 	fire_bullet(direction)
-	print(angle_in_degrees, direction)
+	#print(angle_in_degrees, direction)

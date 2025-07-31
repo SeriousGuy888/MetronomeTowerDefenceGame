@@ -1,16 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://brx4osyxy8w0t"]
+[gd_scene load_steps=4 format=3 uid="uid://brx4osyxy8w0t"]
 
 [ext_resource type="Texture2D" uid="uid://4uffg68amuhn" path="res://assets/enemy.png" id="1_7p1mj"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7k104"]
-radius = 20.0
-height = 72.0
+[sub_resource type="GDScript" id="GDScript_7p1mj"]
+script/source = "extends Area2D
 
-[node name="enemy" type="RigidBody2D"]
+@export var speed = 50.0
+
+func _process(delta):
+	var direction_to_center = global_position.direction_to(Vector2.ZERO)
+	position += direction_to_center * speed * delta
+
+func take_damage():
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
+size = Vector2(48, 74)
+
+[node name="enemy" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = SubResource("GDScript_7p1mj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_7p1mj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_7k104")
+shape = SubResource("RectangleShape2D_7p1mj")

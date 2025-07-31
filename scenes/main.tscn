@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://csiyyfb2afljr"]
+[gd_scene load_steps=5 format=3 uid="uid://csiyyfb2afljr"]
 
 [ext_resource type="Script" uid="uid://x3fgsikd2nis" path="res://scenes/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://o3wpudmwbq2j" path="res://scenes/metronome.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bfwt3ofkgvu26" path="res://scenes/monster_spawner.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://brx4osyxy8w0t" path="res://scenes/enemy.tscn" id="4_jyhfs"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -14,5 +16,16 @@ beats_per_minute = 30.0
 [node name="ProjectileContainer" type="Node" parent="."]
 
 [node name="EnemyContainer" type="Node" parent="."]
+
+[node name="MonsterSpawner" type="Node" parent="." node_paths=PackedStringArray("timer", "enemy_container")]
+script = ExtResource("3_sugp2")
+enemy_scene = ExtResource("4_jyhfs")
+timer = NodePath("MonsterSpawnClock")
+enemy_container = NodePath("../EnemyContainer")
+spawn_radius = 500.0
+
+[node name="MonsterSpawnClock" type="Timer" parent="MonsterSpawner"]
+wait_time = 1.5
+autostart = true
 
 [connection signal="request_launch_projectile" from="metronome" to="." method="_on_metronome_request_launch_projectile"]
