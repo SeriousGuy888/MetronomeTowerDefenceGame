@@ -6,6 +6,8 @@ signal request_spawn_projectile(
 	spawn_position: Vector2, # global position
 	direction: Vector2)
 
+
+signal request_spawn_enemy(enemy_scene: PackedScene)
 @warning_ignore("unused_signal")
 signal request_select_turret_slot(turret_slot: TurretSlot)
 
