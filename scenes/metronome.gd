@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 @export var beats_per_minute: float = 120 # float not int, for subsecond calculations
+@export var beats_per_rotation = 4 # how many beats occur in a single rotation of the playhead
 @export var turret_slot_manager: Node2D
 
 @onready var timer: Timer = $Timer

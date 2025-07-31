@@ -1,4 +1,4 @@
-extends Node2D
+class_name TurretSlot extends Node2D
 
 var turret: Turret = null
 
@@ -13,9 +13,10 @@ var direction: Vector2:
 
 # temporary for testing
 const TURRET_SCENE = preload("res://scenes/turrets/turret.tscn")
-const DRUM_TURRET = preload("res://resources/drum_turret.tres")
+const DRUM_TURRET = preload("res://resources/guitar_turret.tres")
 func _ready():
 	place_turret(TURRET_SCENE, DRUM_TURRET)
+	pass
 
 func place_turret(new_turret_scene: PackedScene, turret_type: TurretType):
 	remove_turret()
@@ -32,3 +33,7 @@ func remove_turret():
 func fire():
 	if turret:
 		turret.fire(direction)
+
+
+func _on_texture_button_button_up() -> void:
+	EventBus.request_select_turret_slot.emit(self)

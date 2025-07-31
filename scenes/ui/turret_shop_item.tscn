@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://xmxcbety6uy6"]
+
+[sub_resource type="GDScript" id="GDScript_vb38a"]
+script/source = "extends HBoxContainer
+
+@export var id = \"\"
+@export var title = \"Shop Item\"
+
+signal on_purchase(id: String)
+
+func _ready() -> void:
+	$Title.text = title
+
+func _on_purchase_button_pressed() -> void:
+	EventBus.make_turret_purchase.emit(id)
+"
+
+[node name="TurretShopItem" type="HBoxContainer"]
+script = SubResource("GDScript_vb38a")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "shop item"
+
+[node name="spacer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PurchaseButton" type="Button" parent="."]
+layout_mode = 2
+text = "Buy"
+
+[connection signal="pressed" from="PurchaseButton" to="." method="_on_purchase_button_pressed"]

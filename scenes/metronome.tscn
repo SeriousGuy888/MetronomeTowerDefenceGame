@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://o3wpudmwbq2j"]
 
 [ext_resource type="Script" uid="uid://bd03ifl1peof0" path="res://scenes/metronome.gd" id="1_qls4i"]
-[ext_resource type="Texture2D" uid="uid://csc0uy2dvet1x" path="res://assets/icon.svg" id="1_uhbrk"]
+[ext_resource type="Texture2D" uid="uid://bj7qd0svu23xt" path="res://assets/metronome_background.png" id="2_54fa4"]
 [ext_resource type="Texture2D" uid="uid://dvik0tno8marn" path="res://assets/playhead pixel.png" id="2_c6xhd"]
 [ext_resource type="Script" uid="uid://d3fbot1vc1eyo" path="res://scenes/playhead.gd" id="3_0nmwk"]
 [ext_resource type="Script" uid="uid://dlqnle6p4w2b3" path="res://scenes/turret_slot_manager.gd" id="5_v1fdi"]
 [ext_resource type="PackedScene" uid="uid://b0ujbk8vwtsv4" path="res://scenes/turret_slot.tscn" id="6_54fa4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhbrk"]
-radius = 84.0
+radius = 128.0
 
 [node name="metronome" type="RigidBody2D" node_paths=PackedStringArray("turret_slot_manager")]
 collision_layer = 2
@@ -17,16 +17,16 @@ gravity_scale = 0.0
 script = ExtResource("1_qls4i")
 turret_slot_manager = NodePath("TurretSlotManager")
 
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2_54fa4")
+
 [node name="hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_uhbrk")
 
-[node name="background" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_uhbrk")
-
 [node name="playhead" type="Sprite2D" parent="."]
-scale = Vector2(2, 44.5)
+position = Vector2(0, -0.224717)
+scale = Vector2(2, 64.5)
 texture = ExtResource("2_c6xhd")
 offset = Vector2(0, -0.488764)
 script = ExtResource("3_0nmwk")
