@@ -22,8 +22,6 @@ script = ExtResource("3_sugp2")
 enemy_scene = ExtResource("4_jyhfs")
 timer = NodePath("MonsterSpawnClock")
 enemy_container = NodePath("../EnemyContainer")
-spawn_radius = 500.0
 
 [node name="MonsterSpawnClock" type="Timer" parent="MonsterSpawner"]
-wait_time = 5.0
 autostart = true
