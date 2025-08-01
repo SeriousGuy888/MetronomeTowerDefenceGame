@@ -22,10 +22,11 @@ extends HBoxContainer
 			price_label.text = str(price) + \" coins\"
 
 func _ready() -> void:
-	update_affordability(PlaythroughManager.coins)
-	EventBus.coin_balance_updated.connect(update_affordability)
+	if !Engine.is_editor_hint(): # only when in game,
+		update_affordability(PlaythroughManager.coins)
+		EventBus.coin_balance_updated.connect(update_affordability)
 
-func update_affordability(current_balance: int):
+func update_affordability(current_balance: int = 0):
 	purchase_button.disabled = current_balance < price
 
 func _on_purchase_button_pressed() -> void:
