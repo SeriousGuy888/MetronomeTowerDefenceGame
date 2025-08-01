@@ -3,7 +3,7 @@ extends Area2D
 @export var speed = 50.0
 @export var health = 1
 @export var coins_dropped = 3
-@export var member_of_wave: int
+@export var member_of_wave: int = -1
 
 func _ready():
 	$HealthBar.max_value=health

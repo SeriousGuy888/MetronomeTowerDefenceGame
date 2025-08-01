@@ -42,7 +42,7 @@ func _on_spawn_timer_timeout():
 	var current_wave = waves[current_wave_index]
 	if enemies_spawned_in_wave < current_wave.enemies_in_wave:
 		print("Spawning enemy ", enemies_spawned_in_wave + 1, " of ", current_wave.enemies_in_wave, " in wave ", current_wave_index)
-		EventBus.request_spawn_enemy.emit(current_wave.enemy_scene)
+		EventBus.request_spawn_enemy.emit(current_wave.enemy_scene, current_wave_index)
 		enemies_spawned_in_wave += 1
 		enemies_remaining += 1
 		spawn_timer.start()

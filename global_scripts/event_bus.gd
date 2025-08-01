@@ -6,7 +6,7 @@ signal request_spawn_projectile(
 	projectile_scene: PackedScene,
 	spawn_position: Vector2, # global position
 	direction: Vector2)
-signal request_spawn_enemy(enemy_scene: PackedScene)
+signal request_spawn_enemy(enemy_scene: PackedScene, wave_index: int)
 
 signal request_select_turret_slot(turret_slot: TurretSlot)
 signal make_turret_purchase(shop_item_id: String)
