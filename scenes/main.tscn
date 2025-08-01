@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://csiyyfb2afljr"]
 
 [ext_resource type="Script" uid="uid://x3fgsikd2nis" path="res://scenes/main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://o3wpudmwbq2j" path="res://scenes/metronome.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://o3wpudmwbq2j" path="res://scenes/metronome/metronome.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bfwt3ofkgvu26" path="res://scenes/monster_spawner.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bapj5455wsvny" path="res://scenes/wave_manager.tscn" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://nhkfmg7rw0ad" path="res://scenes/resources/wave.gd" id="4_o6xl0"]
@@ -116,3 +116,31 @@ text = "0"
 [node name="givecoinbutton" type="Button" parent="UI/CoinHUD/HBoxContainer"]
 layout_mode = 2
 text = "give coin"
+
+[node name="WaveHUD" type="Panel" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 91.0
+offset_right = -22.0
+offset_bottom = 130.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
+script = SubResource("GDScript_85g3d")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/WaveHUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CurrentWave" type="Label" parent="UI/WaveHUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "wave 0"
+horizontal_alignment = 1
+vertical_alignment = 1

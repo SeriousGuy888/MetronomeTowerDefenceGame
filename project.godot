@@ -17,8 +17,9 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-EventBus="*res://scenes/event_bus.gd"
-PlaythroughManager="*res://scenes/playthrough_manager.gd"
+EventBus="*res://global_scripts/event_bus.gd"
+PlaythroughManager="*res://global_scripts/playthrough_manager.gd"
+Enums="*res://global_scripts/enums.gd"
 
 [layer_names]
 

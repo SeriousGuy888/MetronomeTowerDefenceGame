@@ -1,5 +1,6 @@
 extends Node
 
+var game_state: Enums.GameState = Enums.GameState.BATTLE
 var coins: int = 10:
 	get:
 		return coins
