@@ -21,7 +21,6 @@ func spawn_turret_slots():
 		slots[angle_deg] = slot
 
 func fire(angle_deg: int):
-	print(angle_deg)
 	var slot = slots.get(angle_deg)
 	if !slot:
 		push_warning("Attempted to fire turret in slot at ", angle_deg, "degrees, but no such slot exists.")
