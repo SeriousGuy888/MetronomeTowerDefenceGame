@@ -1,14 +1,11 @@
 extends Node
 
-@onready var coin_amount_label: Label = %CoinAmount
-
-var coins: int = 0:
+var coins: int = 10:
 	get:
 		return coins
 	set(new_amount):
 		coins = new_amount
-		if coin_amount_label:
-			coin_amount_label.text = str(coins)
+		EventBus.coin_balance_updated.emit(coins)
 
 func _ready() -> void:
 	EventBus.request_add_coins.connect(func(amount): coins += amount)

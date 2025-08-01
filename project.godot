@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 EventBus="*res://scenes/event_bus.gd"
+PlaythroughManager="*res://scenes/playthrough_manager.gd"
 
 [layer_names]
 

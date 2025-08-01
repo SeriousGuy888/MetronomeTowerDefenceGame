@@ -91,15 +91,18 @@ layout_mode = 2
 layout_mode = 2
 id = "none"
 title = "None"
+price = 0
 
 [node name="ItemDrum" parent="VBoxContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
 id = "drum"
 title = "Drum"
+price = 2
 
 [node name="ItemGuitar" parent="VBoxContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
 id = "guitar"
 title = "Guitar"
+price = 5
 
 [connection signal="pressed" from="VBoxContainer/TitleBar/CloseButton" to="." method="_on_close_button_pressed"]

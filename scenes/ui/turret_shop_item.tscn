@@ -4,27 +4,57 @@
 script/source = "@tool
 extends HBoxContainer
 
+@export var title_label: Label 
+@export var price_label: Label
+@export var purchase_button: Button 
+
 @export var id = \"\"
 @export var title = \"Shop Item\":
 	get: return title
 	set(new_value):
 		title = new_value
-		update_label()
+		title_label.text = title
+@export var price = -1:
+	get: return price
+	set(new_value):
+		price = new_value
+		if price_label:
+			price_label.text = str(price) + \" coins\"
 
-func update_label():
-	$Title.text = title
+func _ready() -> void:
+	update_affordability(PlaythroughManager.coins)
+	EventBus.coin_balance_updated.connect(update_affordability)
+
+func update_affordability(current_balance: int):
+	purchase_button.disabled = current_balance < price
 
 func _on_purchase_button_pressed() -> void:
-	EventBus.make_turret_purchase.emit(id)
+	if PlaythroughManager.coins >= price:
+		PlaythroughManager.coins -= price
+		EventBus.make_turret_purchase.emit(id)
 "
 
-[node name="TurretShopItem" type="HBoxContainer"]
+[node name="TurretShopItem" type="HBoxContainer" node_paths=PackedStringArray("title_label", "price_label", "purchase_button")]
 script = SubResource("GDScript_vb38a")
+title_label = NodePath("VBoxContainer/Title")
+price_label = NodePath("VBoxContainer/Price")
+purchase_button = NodePath("PurchaseButton")
+price = null
 
-[node name="Title" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Shop Item"
+
+[node name="Price" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "aaa"
 
 [node name="spacer" type="Control" parent="."]
 layout_mode = 2

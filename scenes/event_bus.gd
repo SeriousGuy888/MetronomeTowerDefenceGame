@@ -17,3 +17,6 @@ signal make_turret_purchase(shop_item_id: String)
 
 @warning_ignore("unused_signal")
 signal request_add_coins(amount: int)
+
+@warning_ignore("unused_signal")
+signal coin_balance_updated(new_balance: int)

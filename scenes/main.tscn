@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dtvylxxc53dxr" path="res://scenes/ui/turret_shop.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://brx4osyxy8w0t" path="res://scenes/enemies/enemy1.tscn" id="5_tipki"]
 [ext_resource type="PackedScene" uid="uid://bf8v7ehjh6hk1" path="res://scenes/enemies/enemy2.tscn" id="6_tipki"]
-[ext_resource type="Script" uid="uid://dqtbmknl6m7rg" path="res://scenes/playthrough_manager.gd" id="8_choun"]
 [ext_resource type="Texture2D" uid="uid://b3q6c5patukq0" path="res://assets/coins.png" id="9_85g3d"]
 
 [sub_resource type="Resource" id="Resource_85g3d"]
@@ -36,6 +35,18 @@ expand_margin_top = 8.0
 expand_margin_right = 8.0
 expand_margin_bottom = 8.0
 
+[sub_resource type="GDScript" id="GDScript_85g3d"]
+script/source = "extends Panel
+
+@onready var coin_amount_label: Label = %CoinAmount
+
+func _ready() -> void:
+	EventBus.coin_balance_updated.connect(func(new_balance):
+		if coin_amount_label:
+			coin_amount_label.text = str(new_balance)
+	)
+"
+
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
@@ -54,9 +65,6 @@ waves = Array[ExtResource("4_o6xl0")]([SubResource("Resource_85g3d"), SubResourc
 [node name="MonsterSpawner" type="Node" parent="." node_paths=PackedStringArray("enemy_container")]
 script = ExtResource("3_sugp2")
 enemy_container = NodePath("../EnemyContainer")
-
-[node name="PlaythroughManager" type="Node" parent="."]
-script = ExtResource("8_choun")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -80,6 +88,7 @@ offset_right = -23.0
 offset_bottom = 60.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
+script = SubResource("GDScript_85g3d")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/CoinHUD"]
 layout_mode = 1
@@ -107,5 +116,3 @@ text = "0"
 [node name="givecoinbutton" type="Button" parent="UI/CoinHUD/HBoxContainer"]
 layout_mode = 2
 text = "give coin"
-
-[connection signal="pressed" from="UI/CoinHUD/HBoxContainer/givecoinbutton" to="PlaythroughManager" method="_on_givecoinbutton_pressed"]
