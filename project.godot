@@ -21,6 +21,10 @@ EventBus="*res://global_scripts/event_bus.gd"
 PlaythroughManager="*res://global_scripts/playthrough_manager.gd"
 Enums="*res://global_scripts/enums.gd"
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [layer_names]
 
 2d_physics/layer_3="bullets"
