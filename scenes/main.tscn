@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://csiyyfb2afljr"]
+[gd_scene load_steps=15 format=3 uid="uid://csiyyfb2afljr"]
 
 [ext_resource type="Script" uid="uid://x3fgsikd2nis" path="res://scenes/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://o3wpudmwbq2j" path="res://scenes/metronome/metronome.tscn" id="1_ig7tw"]
@@ -9,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://brx4osyxy8w0t" path="res://scenes/enemies/enemy1.tscn" id="5_tipki"]
 [ext_resource type="PackedScene" uid="uid://bf8v7ehjh6hk1" path="res://scenes/enemies/enemy2.tscn" id="6_tipki"]
 [ext_resource type="Texture2D" uid="uid://b3q6c5patukq0" path="res://assets/coins.png" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://cxiwrek0tej21" path="res://scenes/ui/wave_hud.gd" id="10_choun"]
 
 [sub_resource type="Resource" id="Resource_85g3d"]
 script = ExtResource("4_o6xl0")
-enemies_in_wave = 10
+enemies_in_wave = 4
 time_between_spawns = 0.5
 enemy_scene = ExtResource("5_tipki")
 metadata/_custom_type_script = "uid://nhkfmg7rw0ad"
@@ -36,7 +37,7 @@ expand_margin_right = 8.0
 expand_margin_bottom = 8.0
 
 [sub_resource type="GDScript" id="GDScript_85g3d"]
-script/source = "extends Panel
+script/source = "extends PanelContainer
 
 @onready var coin_amount_label: Label = %CoinAmount
 
@@ -50,11 +51,12 @@ func update_balance(new_balance: int):
 	
 "
 
-[node name="MainScene" type="Node2D"]
+[node name="MainScene" type="Node2D" node_paths=PackedStringArray("projectile_container", "enemy_container")]
 script = ExtResource("1_0xm2m")
+projectile_container = NodePath("ProjectileContainer")
+enemy_container = NodePath("EnemyContainer")
 
 [node name="metronome" parent="." instance=ExtResource("1_ig7tw")]
-beats_per_minute = 30.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -81,7 +83,7 @@ offset_right = 207.0
 offset_bottom = 0.0
 grow_vertical = 0
 
-[node name="CoinHUD" type="Panel" parent="UI"]
+[node name="CoinHUD" type="PanelContainer" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -94,12 +96,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
 script = SubResource("GDScript_85g3d")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/CoinHUD"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="CoinImage" type="TextureRect" parent="UI/CoinHUD/HBoxContainer"]
 layout_mode = 2
@@ -121,30 +118,42 @@ visible = false
 layout_mode = 2
 text = "give coin"
 
-[node name="WaveHUD" type="Panel" parent="UI"]
+[node name="WaveHUD" type="PanelContainer" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -170.0
 offset_top = 91.0
 offset_right = -22.0
-offset_bottom = 130.0
+offset_bottom = 148.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
-script = SubResource("GDScript_85g3d")
+script = ExtResource("10_choun")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/WaveHUD"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/WaveHUD"]
+layout_mode = 2
 
-[node name="CurrentWave" type="Label" parent="UI/WaveHUD/HBoxContainer"]
+[node name="CurrentWave" type="Label" parent="UI/WaveHUD/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "wave 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="NextWaveButton" type="Button" parent="UI/WaveHUD/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "next"
+
+[node name="GameState" type="Label" parent="UI/WaveHUD/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "aaaa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="UI/WaveHUD/VBoxContainer/NextWaveButton" to="UI/WaveHUD" method="_on_next_wave_button_pressed"]

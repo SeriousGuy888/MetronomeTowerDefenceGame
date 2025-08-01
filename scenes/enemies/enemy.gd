@@ -3,6 +3,7 @@ extends Area2D
 @export var speed = 50.0
 @export var health = 1
 @export var coins_dropped = 3
+@export var member_of_wave: int
 
 func _ready():
 	$HealthBar.max_value=health
@@ -26,4 +27,6 @@ func take_damage(damage_amount):
 
 func die():
 	EventBus.request_add_coins.emit(coins_dropped)
+	if member_of_wave != null:
+		EventBus.enemy_from_wave_died.emit(member_of_wave)
 	queue_free()
