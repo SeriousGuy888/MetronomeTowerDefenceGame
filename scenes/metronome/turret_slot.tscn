@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0ujbk8vwtsv4"]
 
 [ext_resource type="Texture2D" uid="uid://47n5lvqs8dj3" path="res://assets/turret_slot.png" id="1_aep7t"]
-[ext_resource type="Script" uid="uid://l84kqyk6avq1" path="res://scenes/turret_slot.gd" id="1_oxvf1"]
+[ext_resource type="Script" uid="uid://l84kqyk6avq1" path="res://scenes/metronome/turret_slot.gd" id="1_oxvf1"]
 
 [node name="TurretSlot" type="Node2D"]
 script = ExtResource("1_oxvf1")

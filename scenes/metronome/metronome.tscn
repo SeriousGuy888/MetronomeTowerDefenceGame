@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://o3wpudmwbq2j"]
 
-[ext_resource type="Script" uid="uid://bd03ifl1peof0" path="res://scenes/metronome.gd" id="1_qls4i"]
+[ext_resource type="Script" uid="uid://bd03ifl1peof0" path="res://scenes/metronome/metronome.gd" id="1_qls4i"]
 [ext_resource type="Texture2D" uid="uid://bj7qd0svu23xt" path="res://assets/metronome_background.png" id="2_54fa4"]
 [ext_resource type="Texture2D" uid="uid://dvik0tno8marn" path="res://assets/playhead pixel.png" id="2_c6xhd"]
-[ext_resource type="Script" uid="uid://d3fbot1vc1eyo" path="res://scenes/playhead.gd" id="3_0nmwk"]
-[ext_resource type="Script" uid="uid://dlqnle6p4w2b3" path="res://scenes/turret_slot_manager.gd" id="5_v1fdi"]
-[ext_resource type="PackedScene" uid="uid://b0ujbk8vwtsv4" path="res://scenes/turret_slot.tscn" id="6_54fa4"]
+[ext_resource type="Script" uid="uid://d3fbot1vc1eyo" path="res://scenes/metronome/playhead.gd" id="3_0nmwk"]
+[ext_resource type="Script" uid="uid://dlqnle6p4w2b3" path="res://scenes/metronome/turret_slot_manager.gd" id="5_v1fdi"]
+[ext_resource type="PackedScene" uid="uid://b0ujbk8vwtsv4" path="res://scenes/metronome/turret_slot.tscn" id="6_54fa4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhbrk"]
 radius = 128.0
