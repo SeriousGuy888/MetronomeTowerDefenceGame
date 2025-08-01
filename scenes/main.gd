@@ -12,6 +12,11 @@ func _ready() -> void:
 	PlaythroughManager.start_game()
 
 func handle_wave_complete(is_last_wave: bool):
+	if PlaythroughManager.game_state != Enums.GameState.BATTLE:
+		# only accept signal if there was actually a wave happening
+		# (i.e. don't do anything if the game is already over)
+		return
+	
 	if is_last_wave:
 		print("game over - victory")
 		return
