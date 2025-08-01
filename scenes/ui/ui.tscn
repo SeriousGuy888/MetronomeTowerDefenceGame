@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://btvlm8jbmbyso"]
+[gd_scene load_steps=8 format=3 uid="uid://btvlm8jbmbyso"]
 
 [ext_resource type="PackedScene" uid="uid://dtvylxxc53dxr" path="res://scenes/ui/turret_shop.tscn" id="1_aac20"]
 [ext_resource type="Texture2D" uid="uid://b3q6c5patukq0" path="res://assets/coins.png" id="2_g5kmx"]
 [ext_resource type="Script" uid="uid://cxiwrek0tej21" path="res://scenes/ui/wave_hud.gd" id="3_0dwhk"]
+[ext_resource type="Script" uid="uid://dnkji20t0e30p" path="res://scenes/ui/lives_hud.gd" id="4_0dwhk"]
+[ext_resource type="PackedScene" uid="uid://dnkhggbg6k7hk" path="res://scenes/ui/heart.tscn" id="5_pfayw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
 bg_color = Color(1, 1, 1, 1)
@@ -114,5 +116,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "aaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LivesHUD" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+script = ExtResource("4_0dwhk")
+heart_scene = ExtResource("5_pfayw")
+
+[node name="heart" parent="LivesHUD" instance=ExtResource("5_pfayw")]
+layout_mode = 2
 
 [connection signal="pressed" from="WaveHUD/VBoxContainer/NextWaveButton" to="WaveHUD" method="_on_next_wave_button_pressed"]

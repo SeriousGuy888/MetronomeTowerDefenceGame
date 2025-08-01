@@ -1,20 +1,22 @@
 extends Node
 
 var game_state: Enums.GameState = Enums.GameState.BATTLE:
-	get:
-		return game_state
+	get: return game_state
 	set(new_state):
 		game_state = new_state
 		EventBus.game_state_updated.emit(game_state)
+var lives_remaining: int = 3:
+	get: return lives_remaining
+	set(new_amount):
+		lives_remaining = new_amount
+		EventBus.lives_remaining_updated.emit(lives_remaining)
 var current_wave = 0:
-	get:
-		return current_wave
+	get: return current_wave
 	set(new_wave):
 		current_wave = new_wave
 		EventBus.current_wave_updated.emit(current_wave)
 var coins: int = 10:
-	get:
-		return coins
+	get: return coins
 	set(new_amount):
 		coins = new_amount
 		EventBus.coin_balance_updated.emit(coins)

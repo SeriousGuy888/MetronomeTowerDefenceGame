@@ -14,6 +14,7 @@ signal make_turret_purchase(shop_item_id: String)
 signal request_add_coins(amount: int)
 
 signal game_state_updated(new_game_state: Enums.GameState)
+signal lives_remaining_updated(new_number: int)
 signal current_wave_updated(new_wave: int)
 signal coin_balance_updated(new_balance: int)
 
