@@ -1,15 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://csiyyfb2afljr"]
+[gd_scene load_steps=11 format=3 uid="uid://csiyyfb2afljr"]
 
 [ext_resource type="Script" uid="uid://x3fgsikd2nis" path="res://scenes/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://o3wpudmwbq2j" path="res://scenes/metronome/metronome.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bfwt3ofkgvu26" path="res://scenes/monster_spawner.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bapj5455wsvny" path="res://scenes/wave_manager.tscn" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://nhkfmg7rw0ad" path="res://scenes/resources/wave.gd" id="4_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://dtvylxxc53dxr" path="res://scenes/ui/turret_shop.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://brx4osyxy8w0t" path="res://scenes/enemies/enemy1.tscn" id="5_tipki"]
 [ext_resource type="PackedScene" uid="uid://bf8v7ehjh6hk1" path="res://scenes/enemies/enemy2.tscn" id="6_tipki"]
-[ext_resource type="Texture2D" uid="uid://b3q6c5patukq0" path="res://assets/coins.png" id="9_85g3d"]
-[ext_resource type="Script" uid="uid://cxiwrek0tej21" path="res://scenes/ui/wave_hud.gd" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://btvlm8jbmbyso" path="res://scenes/ui/ui.tscn" id="8_tipki"]
 
 [sub_resource type="Resource" id="Resource_85g3d"]
 script = ExtResource("4_o6xl0")
@@ -24,32 +22,6 @@ enemies_in_wave = 5
 time_between_spawns = 1.0
 enemy_scene = ExtResource("6_tipki")
 metadata/_custom_type_script = "uid://nhkfmg7rw0ad"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 8.0
-expand_margin_top = 8.0
-expand_margin_right = 8.0
-expand_margin_bottom = 8.0
-
-[sub_resource type="GDScript" id="GDScript_85g3d"]
-script/source = "extends PanelContainer
-
-@onready var coin_amount_label: Label = %CoinAmount
-
-func _ready() -> void:
-	update_balance(PlaythroughManager.coins)
-	EventBus.coin_balance_updated.connect(update_balance)
-
-func update_balance(new_balance: int):
-	if coin_amount_label:
-		coin_amount_label.text = str(new_balance)
-	
-"
 
 [node name="MainScene" type="Node2D" node_paths=PackedStringArray("projectile_container", "enemy_container")]
 script = ExtResource("1_0xm2m")
@@ -71,89 +43,4 @@ waves = Array[ExtResource("4_o6xl0")]([SubResource("Resource_85g3d"), SubResourc
 script = ExtResource("3_sugp2")
 enemy_container = NodePath("../EnemyContainer")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="TurretShop" parent="UI" instance=ExtResource("5_tbgi4")]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -188.0
-offset_right = 207.0
-offset_bottom = 0.0
-grow_vertical = 0
-
-[node name="CoinHUD" type="PanelContainer" parent="UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -170.0
-offset_top = 20.0
-offset_right = -23.0
-offset_bottom = 60.0
-grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
-script = SubResource("GDScript_85g3d")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/CoinHUD"]
-layout_mode = 2
-
-[node name="CoinImage" type="TextureRect" parent="UI/CoinHUD/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("9_85g3d")
-
-[node name="spacer" type="Control" parent="UI/CoinHUD/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CoinAmount" type="Label" parent="UI/CoinHUD/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "0"
-
-[node name="givecoinbutton" type="Button" parent="UI/CoinHUD/HBoxContainer"]
-visible = false
-layout_mode = 2
-text = "give coin"
-
-[node name="WaveHUD" type="PanelContainer" parent="UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -170.0
-offset_top = 91.0
-offset_right = -22.0
-offset_bottom = 148.0
-grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
-script = ExtResource("10_choun")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/WaveHUD"]
-layout_mode = 2
-
-[node name="CurrentWave" type="Label" parent="UI/WaveHUD/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "wave 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NextWaveButton" type="Button" parent="UI/WaveHUD/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "next"
-
-[node name="GameState" type="Label" parent="UI/WaveHUD/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "aaaa"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="pressed" from="UI/WaveHUD/VBoxContainer/NextWaveButton" to="UI/WaveHUD" method="_on_next_wave_button_pressed"]
+[node name="UI" parent="." instance=ExtResource("8_tipki")]

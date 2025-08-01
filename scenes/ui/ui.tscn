@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=3 uid="uid://btvlm8jbmbyso"]
+
+[ext_resource type="PackedScene" uid="uid://dtvylxxc53dxr" path="res://scenes/ui/turret_shop.tscn" id="1_aac20"]
+[ext_resource type="Texture2D" uid="uid://b3q6c5patukq0" path="res://assets/coins.png" id="2_g5kmx"]
+[ext_resource type="Script" uid="uid://cxiwrek0tej21" path="res://scenes/ui/wave_hud.gd" id="3_0dwhk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="GDScript" id="GDScript_85g3d"]
+script/source = "extends PanelContainer
+
+@onready var coin_amount_label: Label = %CoinAmount
+
+func _ready() -> void:
+	update_balance(PlaythroughManager.coins)
+	EventBus.coin_balance_updated.connect(update_balance)
+
+func update_balance(new_balance: int):
+	if coin_amount_label:
+		coin_amount_label.text = str(new_balance)
+	
+"
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="TurretShop" parent="." instance=ExtResource("1_aac20")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -188.0
+offset_right = 207.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="CoinHUD" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 20.0
+offset_right = -23.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
+script = SubResource("GDScript_85g3d")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CoinHUD"]
+layout_mode = 2
+
+[node name="CoinImage" type="TextureRect" parent="CoinHUD/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_g5kmx")
+
+[node name="spacer" type="Control" parent="CoinHUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CoinAmount" type="Label" parent="CoinHUD/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="givecoinbutton" type="Button" parent="CoinHUD/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "give coin"
+
+[node name="WaveHUD" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 91.0
+offset_right = -22.0
+offset_bottom = 148.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
+script = ExtResource("3_0dwhk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WaveHUD"]
+layout_mode = 2
+
+[node name="CurrentWave" type="Label" parent="WaveHUD/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "wave 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextWaveButton" type="Button" parent="WaveHUD/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "next"
+
+[node name="GameState" type="Label" parent="WaveHUD/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "aaaa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="WaveHUD/VBoxContainer/NextWaveButton" to="WaveHUD" method="_on_next_wave_button_pressed"]
