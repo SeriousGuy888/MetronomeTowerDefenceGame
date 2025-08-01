@@ -23,10 +23,11 @@ func take_damage(damage_amount):
 	health -= damage_amount
 	set_health_bar()
 	if health <= 0:
-		die()
+		die(true)
 
-func die():
-	EventBus.request_add_coins.emit(coins_dropped)
+func die(was_killed: bool):
+	if was_killed:
+		EventBus.request_add_coins.emit(coins_dropped)
 	if member_of_wave != null:
 		EventBus.enemy_from_wave_died.emit(member_of_wave)
 	queue_free()

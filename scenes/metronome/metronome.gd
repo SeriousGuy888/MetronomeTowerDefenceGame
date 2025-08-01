@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 		if area is Enemy:
 			PlaythroughManager.lives_remaining -= 1
 			print("-1 life. new: ", PlaythroughManager.lives_remaining)
-			area.die()
+			area.die(false)
 
 func _on_timer_timeout() -> void:
 	tick += 1
