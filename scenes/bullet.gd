@@ -2,12 +2,11 @@ class_name Bullet extends Area2D
 
 @onready var sprite: Sprite2D = $sprite
 
-var _direction: Vector2
 var direction: Vector2:
 	get:
-		return _direction
+		return direction
 	set(value):
-		_direction = value.normalized()
+		direction = value.normalized()
 
 func _ready() -> void:
 	pass
@@ -20,6 +19,7 @@ func _process(delta) -> void:
 		queue_free()
 
 func _on_area_entered(area):
-	if area.is_in_group("enemies"):
+	if area is Enemy:
+		print("aa")
 		area.take_damage(1)
 		queue_free()

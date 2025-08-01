@@ -1,4 +1,4 @@
-extends Area2D
+class_name Enemy extends Area2D
 
 @export var speed = 50.0
 @export var health = 1

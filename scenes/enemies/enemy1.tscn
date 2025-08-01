@@ -10,7 +10,6 @@ size = Vector2(30, 42)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_8e3ao")
-speed = 25.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0258621, 0.0258621)

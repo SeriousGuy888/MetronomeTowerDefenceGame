@@ -10,6 +10,8 @@ var lives_remaining: int = 3:
 	set(new_amount):
 		lives_remaining = new_amount
 		EventBus.lives_remaining_updated.emit(lives_remaining)
+		if lives_remaining <= 0:
+			lose()
 var current_wave = 0:
 	get: return current_wave
 	set(new_wave):
@@ -28,3 +30,6 @@ func start_game():
 	coins = 10
 	current_wave = 0
 	game_state = Enums.GameState.BATTLE
+
+func lose():
+	print("game over - defeat")

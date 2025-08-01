@@ -9,7 +9,7 @@ func _ready() -> void:
 func update_lives(number_of_lives: int):
 	var currently_have = 0
 	for child in get_children():
-		if currently_have > number_of_lives:
+		if currently_have >= number_of_lives:
 			child.queue_free()
 		else:
 			currently_have += 1
