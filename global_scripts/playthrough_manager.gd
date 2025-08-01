@@ -33,3 +33,4 @@ func start_game():
 
 func lose():
 	print("game over - defeat")
+	game_state = Enums.GameState.GAME_OVER
