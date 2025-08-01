@@ -1,7 +1,5 @@
 extends Node2D
 
-@export var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
-
 @onready var projectile_container: Node = $ProjectileContainer
 @onready var enemy_container: Node = $EnemyContainer
 

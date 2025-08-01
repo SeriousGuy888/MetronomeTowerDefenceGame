@@ -41,10 +41,13 @@ script/source = "extends Panel
 @onready var coin_amount_label: Label = %CoinAmount
 
 func _ready() -> void:
-	EventBus.coin_balance_updated.connect(func(new_balance):
-		if coin_amount_label:
-			coin_amount_label.text = str(new_balance)
-	)
+	update_balance(PlaythroughManager.coins)
+	EventBus.coin_balance_updated.connect(update_balance)
+
+func update_balance(new_balance: int):
+	if coin_amount_label:
+		coin_amount_label.text = str(new_balance)
+	
 "
 
 [node name="MainScene" type="Node2D"]
@@ -114,6 +117,7 @@ theme_override_font_sizes/font_size = 24
 text = "0"
 
 [node name="givecoinbutton" type="Button" parent="UI/CoinHUD/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "give coin"
 
