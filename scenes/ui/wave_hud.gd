@@ -12,7 +12,7 @@ func update_wave_counter(new_wave: int):
 func handle_game_state_change(new_state: Enums.GameState):
 	print(new_state)
 	%NextWaveButton.visible = (new_state == Enums.GameState.BUILD)
-	%GameState.text = Enums.GameState.keys()[new_state]
+	%GameState.text = Enums.GameState.find_key(new_state)
 
 func _on_next_wave_button_pressed() -> void:
 	EventBus.request_next_wave.emit()
