@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="TurretType" load_steps=5 format=3 uid="uid://de7w7wexahke"]
+[gd_resource type="Resource" script_class="HiHatTurret" load_steps=6 format=3 uid="uid://de7w7wexahke"]
 
+[ext_resource type="PackedScene" uid="uid://1qtlxekjwxvh" path="res://scenes/projectiles/shiny_frisbee.tscn" id="1_8emxp"]
 [ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/types/turret_type.gd" id="1_jp5fj"]
-[ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/projectiles/drumbeat.tscn" id="1_rfkgb"]
+[ext_resource type="Script" uid="uid://dgq78wd7t8lbq" path="res://scenes/turrets/types/hi_hat_turret.gd" id="2_lnjdb"]
 [ext_resource type="Texture2D" uid="uid://bf255se0v706o" path="res://assets/turrets/hihat.png" id="3_uqipc"]
 [ext_resource type="Resource" uid="uid://cawd0qvl1r14q" path="res://resources/turrets/crash_cymbal.tres" id="4_15d04"]
 
 [resource]
-script = ExtResource("1_jp5fj")
-projectile_scene = ExtResource("1_rfkgb")
+script = ExtResource("2_lnjdb")
+projectile_scene = ExtResource("1_8emxp")
 texture = ExtResource("3_uqipc")
 name = "Hi-Hat"
 price = 1

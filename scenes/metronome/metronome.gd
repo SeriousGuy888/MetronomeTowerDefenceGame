@@ -24,6 +24,11 @@ func _on_timer_timeout() -> void:
 	tick += 1
 	timer.start()
 
+func get_turret_slot_global_position(lane: Enums.Lane):
+	var slot: TurretSlot = $TurretSlotManager.slots.get(lane)
+	if slot:
+		return slot.global_position
+	return null
 
 func _on_playhead_angle_passed(lane: Enums.Lane) -> void:
 	# angle is given as "degrees clockwise from north"

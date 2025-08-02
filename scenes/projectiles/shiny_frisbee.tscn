@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://1qtlxekjwxvh"]
+
+[ext_resource type="Script" uid="uid://llbb86gf83s7" path="res://scenes/projectiles/shiny_frisbee.gd" id="1_8nwsg"]
+[ext_resource type="Texture2D" uid="uid://ckuyhq7vyxas0" path="res://assets/projectiles/drumbeat.png" id="2_ah8kg"]
+[ext_resource type="Texture2D" uid="uid://c1t4cfl0ekone" path="res://assets/projectiles/shiny_frisbee_thing.png" id="3_ah8kg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
+size = Vector2(36, 39)
+
+[node name="shiny_frisbee" type="Area2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_8nwsg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_v8qja")
+
+[node name="sprite" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ah8kg")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(0.5, 0.5)
+amount = 1
+texture = ExtResource("3_ah8kg")
+lifetime = 600.0
+randomness = 0.51
+lifetime_randomness = 1.0
+local_coords = true
+spread = 92.27
+gravity = Vector2(0, 0)
+angular_velocity_min = 250.0
+angular_velocity_max = 300.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

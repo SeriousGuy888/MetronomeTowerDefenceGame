@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="TurretType" load_steps=5 format=3 uid="uid://br1ugit7tpkbs"]
+[gd_resource type="Resource" script_class="TambourineTurret" load_steps=6 format=3 uid="uid://br1ugit7tpkbs"]
 
 [ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/types/turret_type.gd" id="1_jp5fj"]
-[ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/projectiles/drumbeat.tscn" id="1_rfkgb"]
+[ext_resource type="PackedScene" uid="uid://1qtlxekjwxvh" path="res://scenes/projectiles/shiny_frisbee.tscn" id="1_tjoc3"]
+[ext_resource type="Script" uid="uid://cdy8nw816i77s" path="res://scenes/turrets/types/tambourine_turret.gd" id="2_o3k7e"]
 [ext_resource type="Texture2D" uid="uid://1h7g7tq40dj8" path="res://assets/turrets/tambourine.png" id="3_fghyg"]
 [ext_resource type="Resource" uid="uid://de7w7wexahke" path="res://resources/turrets/hi_hat.tres" id="4_5f63b"]
 
 [resource]
-script = ExtResource("1_jp5fj")
-projectile_scene = ExtResource("1_rfkgb")
+script = ExtResource("2_o3k7e")
+projectile_scene = ExtResource("1_tjoc3")
 texture = ExtResource("3_fghyg")
 name = "Tambourine"
 price = 1

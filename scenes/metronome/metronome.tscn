@@ -29,7 +29,6 @@ scale = Vector2(2, 64.5)
 texture = ExtResource("2_c6xhd")
 offset = Vector2(0, -0.488764)
 script = ExtResource("3_0nmwk")
-angles_to_watch_degrees = Array[int]([0, 45, 90, 135, 180, 225, 270, 315])
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
