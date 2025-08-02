@@ -2,7 +2,7 @@ class_name Projectile extends Area2D
 
 @export var sprite: Sprite2D
 
-var damage: int = 1
+var damage: float = 1
 var damage_type: Enums.TurretDamageType = Enums.TurretDamageType.PERCUSSION
 
 func set_damage_info(new_damage: int, new_damage_type: Enums.TurretDamageType):
