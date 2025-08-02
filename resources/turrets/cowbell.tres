@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="TurretType" load_steps=4 format=3 uid="uid://chvnsja6wxyvu"]
+[gd_resource type="Resource" script_class="TriangleTurret" load_steps=5 format=3 uid="uid://chvnsja6wxyvu"]
 
+[ext_resource type="PackedScene" uid="uid://dl3hxy3tjge6x" path="res://scenes/projectiles/homing_ring.tscn" id="1_3hqq1"]
 [ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/types/turret_type.gd" id="1_jp5fj"]
-[ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/projectiles/drumbeat.tscn" id="1_rfkgb"]
+[ext_resource type="Script" uid="uid://cma8gn2l0qig4" path="res://scenes/turrets/types/cowbell_turret.gd" id="2_8cvcf"]
 [ext_resource type="Texture2D" uid="uid://v2wqsmqvq8s4" path="res://assets/turrets/cowbell.png" id="3_dbhuo"]
 
 [resource]
-script = ExtResource("1_jp5fj")
-projectile_scene = ExtResource("1_rfkgb")
+script = ExtResource("2_8cvcf")
+projectile_scene = ExtResource("1_3hqq1")
 texture = ExtResource("3_dbhuo")
 name = "Cowbell"
 price = 1
+upgrades_to = Array[ExtResource("1_jp5fj")]([])
 metadata/_custom_type_script = "uid://8jr1l0e633vy"

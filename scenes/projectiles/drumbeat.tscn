@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ckuyhq7vyxas0" path="res://assets/projectiles/drumbeat.png" id="2_a2r0j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
-size = Vector2(12, 9)
+size = Vector2(32, 25)
 
 [node name="drumbeat" type="Area2D" node_paths=PackedStringArray("sprite")]
 collision_layer = 4

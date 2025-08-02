@@ -1,7 +1,7 @@
 class_name Enemy extends Area2D
 
 @export var speed = 50.0
-@export var health = 1
+@export var health = 1.0
 @export var coins_dropped = 3
 @export var member_of_wave: int = -1
 
@@ -11,7 +11,7 @@ func _ready():
 	set_health_bar()
 
 func set_health_bar()->void:
-	$HealthBar.value = health
+	print($HealthBar.value)
 	if health < $HealthBar.max_value:
 		$HealthBar.visible=true
 
@@ -19,7 +19,7 @@ func _process(delta):
 	var direction_to_center = global_position.direction_to(Vector2.ZERO)
 	position += direction_to_center * speed * delta
 
-func take_damage(damage_amount):
+func take_damage(damage_amount: float):
 	health -= damage_amount
 	set_health_bar()
 	if health <= 0:

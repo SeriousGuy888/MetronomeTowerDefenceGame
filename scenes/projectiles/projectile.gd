@@ -1,6 +1,7 @@
 class_name Projectile extends Area2D
 
 @export var sprite: Sprite2D
+@export var damage: float = 1.0
 
 func _process(_delta) -> void:
 	delete_if_far_away()
@@ -12,5 +13,5 @@ func delete_if_far_away():
 
 func _on_area_entered(area):
 	if area is Enemy:
-		area.take_damage(1)
+		area.take_damage(damage)
 		queue_free()

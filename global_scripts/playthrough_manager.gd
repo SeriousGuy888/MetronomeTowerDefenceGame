@@ -5,7 +5,7 @@ var game_state: Enums.GameState = Enums.GameState.BATTLE:
 	set(new_state):
 		game_state = new_state
 		EventBus.game_state_updated.emit(game_state)
-var lives_remaining: int = 3:
+var lives_remaining: int = 5:
 	get: return lives_remaining
 	set(new_amount):
 		lives_remaining = new_amount

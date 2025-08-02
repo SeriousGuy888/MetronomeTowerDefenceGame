@@ -8,11 +8,10 @@ var direction: Vector2:
 	set(value): direction = value.normalized()
 
 func _process(delta) -> void:
+	super(delta)
+	
 	position += direction * speed * delta
 	look_at(position + direction)
-	# temporary way to delete bullets once they're far away
-	if abs(position.x) > 2000 or abs(position.y) > 2000:
-		queue_free()
 
 func _on_area_entered(area):
 	if area is Enemy:

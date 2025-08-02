@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="TurretType" load_steps=5 format=3 uid="uid://bi7ql5c8wquxi"]
+[gd_resource type="Resource" script_class="TriangleTurret" load_steps=6 format=3 uid="uid://bi7ql5c8wquxi"]
 
+[ext_resource type="PackedScene" uid="uid://dl3hxy3tjge6x" path="res://scenes/projectiles/homing_ring.tscn" id="1_jexxr"]
 [ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/types/turret_type.gd" id="1_jp5fj"]
-[ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/projectiles/drumbeat.tscn" id="1_rfkgb"]
+[ext_resource type="Script" uid="uid://xmqgibcwpbrs" path="res://scenes/turrets/types/triangle_turret.gd" id="2_klkki"]
 [ext_resource type="Texture2D" uid="uid://0co2c5ewhihk" path="res://assets/turrets/triangle.png" id="3_gqwmr"]
 [ext_resource type="Resource" uid="uid://chvnsja6wxyvu" path="res://resources/turrets/cowbell.tres" id="4_b8s30"]
 
 [resource]
-script = ExtResource("1_jp5fj")
-projectile_scene = ExtResource("1_rfkgb")
+script = ExtResource("2_klkki")
+projectile_scene = ExtResource("1_jexxr")
 texture = ExtResource("3_gqwmr")
 name = "Triangle"
 price = 1

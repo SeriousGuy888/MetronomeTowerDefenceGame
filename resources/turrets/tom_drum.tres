@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://drbvyptfyr5cc"]
+[gd_resource type="Resource" script_class="TomDrumTurret" load_steps=6 format=3 uid="uid://drbvyptfyr5cc"]
 
 [ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/projectiles/drumbeat.tscn" id="1_woevn"]
 [ext_resource type="Script" uid="uid://dblhp7x7qsevx" path="res://scenes/turrets/types/tom_drum_turret.gd" id="2_cstxw"]
