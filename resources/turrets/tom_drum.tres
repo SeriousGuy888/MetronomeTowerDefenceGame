@@ -9,6 +9,8 @@
 [resource]
 script = ExtResource("2_cstxw")
 projectile_scene = ExtResource("1_woevn")
+damage_type = 0
+base_damage = 1
 texture = ExtResource("3_woevn")
 name = "Tom Drum"
 price = 1

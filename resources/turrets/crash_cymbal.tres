@@ -7,7 +7,10 @@
 [resource]
 script = ExtResource("1_jp5fj")
 projectile_scene = ExtResource("1_rfkgb")
+damage_type = 3
+base_damage = 2
 texture = ExtResource("3_8gwto")
 name = "Crash Cymbal"
 price = 1
+upgrades_to = Array[ExtResource("1_jp5fj")]([])
 metadata/_custom_type_script = "uid://8jr1l0e633vy"

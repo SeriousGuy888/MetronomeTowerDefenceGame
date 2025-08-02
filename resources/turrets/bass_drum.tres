@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SnareDrumTurret" load_steps=5 format=3 uid="uid://dkeon7jde60pr"]
+[gd_resource type="Resource" script_class="BassDrumTurret" load_steps=5 format=3 uid="uid://dkeon7jde60pr"]
 
 [ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/projectiles/drumbeat.tscn" id="1_uepft"]
 [ext_resource type="Script" uid="uid://cjxa8gndeca56" path="res://scenes/turrets/types/bass_drum_turret.gd" id="2_o14r4"]
@@ -8,6 +8,8 @@
 [resource]
 script = ExtResource("2_o14r4")
 projectile_scene = ExtResource("1_uepft")
+damage_type = 0
+base_damage = 3
 texture = ExtResource("3_uepft")
 name = "Bass Drum"
 price = 1
