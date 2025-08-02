@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="BassDrumTurret" load_steps=5 format=3 uid="uid://dkeon7jde60pr"]
+[gd_resource type="Resource" script_class="BassDrumTurret" load_steps=6 format=3 uid="uid://dkeon7jde60pr"]
 
 [ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/projectiles/drumbeat.tscn" id="1_uepft"]
 [ext_resource type="Script" uid="uid://cjxa8gndeca56" path="res://scenes/turrets/types/bass_drum_turret.gd" id="2_o14r4"]
+[ext_resource type="AudioStream" uid="uid://bhgotplljkawm" path="res://assets/sounds/turrets/bass_drum.mp3" id="3_jba3n"]
 [ext_resource type="Texture2D" uid="uid://cb8i4mafvg8pg" path="res://assets/turrets/bass_drum.png" id="3_uepft"]
 [ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/types/turret_type.gd" id="4_jba3n"]
 
@@ -14,4 +15,5 @@ texture = ExtResource("3_uepft")
 name = "Bass Drum"
 price = 1
 upgrades_to = Array[ExtResource("4_jba3n")]([])
+sound_effect = ExtResource("3_jba3n")
 metadata/_custom_type_script = "uid://8jr1l0e633vy"

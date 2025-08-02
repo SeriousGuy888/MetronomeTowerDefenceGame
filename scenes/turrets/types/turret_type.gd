@@ -10,6 +10,8 @@ extends Resource
 @export var price: int = 1
 @export var upgrades_to: Array[TurretType]
 
+@export var sound_effect: AudioStream
+
 func create_projectile_instance(lane: Enums.Lane) -> Projectile:
 	if projectile_scene:
 		return _setup_projectile_instance(lane)
@@ -22,3 +24,6 @@ func _setup_projectile_instance(_lane: Enums.Lane) -> Projectile:
 	if projectile.has_method("set_damage_info"):
 		projectile.set_damage_info(base_damage, damage_type)
 	return projectile
+
+func play_sound():
+	pass
