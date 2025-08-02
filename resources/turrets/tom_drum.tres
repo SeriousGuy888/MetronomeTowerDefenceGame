@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="TurretType" load_steps=4 format=3 uid="uid://drbvyptfyr5cc"]
+[gd_resource type="Resource" script_class="TurretType" load_steps=5 format=3 uid="uid://drbvyptfyr5cc"]
 
 [ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/bullet.tscn" id="1_oyk60"]
 [ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/turret_type.gd" id="2_oplx7"]
 [ext_resource type="Texture2D" uid="uid://cxsw70cq7jww4" path="res://assets/turrets/tom_drum.png" id="3_woevn"]
+[ext_resource type="Resource" uid="uid://b6vpsmxnkfi22" path="res://resources/turrets/snare_drum.tres" id="4_oplx7"]
 
 [resource]
 script = ExtResource("2_oplx7")
@@ -10,4 +11,5 @@ projectile_scene = ExtResource("1_oyk60")
 texture = ExtResource("3_woevn")
 name = "Tom Drum"
 price = 1
+upgrades_to = ExtResource("4_oplx7")
 metadata/_custom_type_script = "uid://8jr1l0e633vy"

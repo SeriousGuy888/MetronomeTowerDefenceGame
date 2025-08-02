@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="TurretType" load_steps=4 format=3 uid="uid://de7w7wexahke"]
+[gd_resource type="Resource" script_class="TurretType" load_steps=5 format=3 uid="uid://de7w7wexahke"]
 
 [ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/turret_type.gd" id="1_jp5fj"]
 [ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/bullet.tscn" id="1_rfkgb"]
 [ext_resource type="Texture2D" uid="uid://bf255se0v706o" path="res://assets/turrets/hihat.png" id="3_uqipc"]
+[ext_resource type="Resource" uid="uid://cawd0qvl1r14q" path="res://resources/turrets/crash_cymbal.tres" id="4_15d04"]
 
 [resource]
 script = ExtResource("1_jp5fj")
@@ -10,4 +11,5 @@ projectile_scene = ExtResource("1_rfkgb")
 texture = ExtResource("3_uqipc")
 name = "Hi-Hat"
 price = 1
+upgrades_to = ExtResource("4_15d04")
 metadata/_custom_type_script = "uid://8jr1l0e633vy"
