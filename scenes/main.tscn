@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://csiyyfb2afljr"]
+[gd_scene load_steps=12 format=3 uid="uid://csiyyfb2afljr"]
 
 [ext_resource type="Script" uid="uid://x3fgsikd2nis" path="res://scenes/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://o3wpudmwbq2j" path="res://scenes/metronome/metronome.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://bs3xqphs5c1b5" path="res://assets/map background.png" id="2_85g3d"]
 [ext_resource type="Script" uid="uid://bfwt3ofkgvu26" path="res://scenes/monster_spawner.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bapj5455wsvny" path="res://scenes/wave_manager.tscn" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://nhkfmg7rw0ad" path="res://scenes/resources/wave.gd" id="4_o6xl0"]
@@ -27,6 +28,9 @@ metadata/_custom_type_script = "uid://nhkfmg7rw0ad"
 script = ExtResource("1_0xm2m")
 projectile_container = NodePath("ProjectileContainer")
 enemy_container = NodePath("EnemyContainer")
+
+[node name="MapBackground" type="Sprite2D" parent="."]
+texture = ExtResource("2_85g3d")
 
 [node name="metronome" parent="." instance=ExtResource("1_ig7tw")]
 
