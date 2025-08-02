@@ -4,7 +4,11 @@
 [ext_resource type="Script" uid="uid://crhcpo6lurur5" path="res://scenes/ui/turret_shop_item.gd" id="1_tu84w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6sr0"]
-bg_color = Color(0.741176, 0.435294, 0.901961, 1)
+bg_color = Color(0.603935, 0.251518, 0.772402, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="TurretShopItem" type="Panel"]
 custom_minimum_size = Vector2(128, 128)
@@ -17,6 +21,7 @@ script = ExtResource("1_tu84w")
 
 [node name="PurchaseButton" type="Button" parent="."]
 unique_name_in_owner = true
+modulate = Color(0, 0, 0, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

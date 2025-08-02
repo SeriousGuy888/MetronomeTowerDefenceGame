@@ -34,6 +34,11 @@ func update_shop_display():
 
 func update_affordability(current_balance: int = 0):
 	purchase_button.disabled = current_balance < price
+	
+	if current_balance < price:
+		set_modulate(Color.DARK_GRAY)
+	else:
+		set_modulate(Color.WHITE)
 
 func _on_purchase_button_pressed() -> void:
 	if PlaythroughManager.coins >= price:
