@@ -23,6 +23,10 @@ func _ready() -> void:
 		if slot == selected_slot:
 			update_offerings()
 	)
+	EventBus.game_state_updated.connect(func(new_state: Enums.GameState):
+		if new_state == Enums.GameState.GAME_OVER:
+			selected_slot = null
+	)
 
 func update_offerings():
 	var current_turret = selected_slot.turret
