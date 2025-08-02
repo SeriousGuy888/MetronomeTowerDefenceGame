@@ -102,14 +102,14 @@ price = 0
 
 [node name="ItemDrum" parent="VBoxContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
-id = "tom_drum"
-title = "Tom Drum"
+id = "drum"
+title = "Drum"
 price = 2
 
 [node name="ItemGuitar" parent="VBoxContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
-id = "triangle"
-title = "Triangle"
+id = "guitar"
+title = "Guitar"
 price = 5
 
 [connection signal="pressed" from="VBoxContainer/TitleBar/CloseButton" to="." method="_on_close_button_pressed"]
