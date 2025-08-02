@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="TurretType" load_steps=4 format=3 uid="uid://cawd0qvl1r14q"]
+[gd_resource type="Resource" script_class="CrashCymbalTurret" load_steps=5 format=3 uid="uid://cawd0qvl1r14q"]
 
+[ext_resource type="PackedScene" uid="uid://1qtlxekjwxvh" path="res://scenes/projectiles/shiny_frisbee.tscn" id="1_gwtql"]
 [ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/types/turret_type.gd" id="1_jp5fj"]
-[ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/projectiles/drumbeat.tscn" id="1_rfkgb"]
+[ext_resource type="Script" uid="uid://ba0ekcxgsi1k0" path="res://scenes/turrets/types/crash_cymbal_turret.gd" id="2_qwk1k"]
 [ext_resource type="Texture2D" uid="uid://bsps6dhphv8xu" path="res://assets/turrets/crash_cymbal.png" id="3_8gwto"]
 
 [resource]
-script = ExtResource("1_jp5fj")
-projectile_scene = ExtResource("1_rfkgb")
+script = ExtResource("2_qwk1k")
+projectile_scene = ExtResource("1_gwtql")
 damage_type = 3
 base_damage = 2
 texture = ExtResource("3_8gwto")

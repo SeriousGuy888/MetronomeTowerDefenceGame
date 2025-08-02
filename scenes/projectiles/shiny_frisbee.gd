@@ -15,6 +15,7 @@ const NEIGHBOURING_LANES := {
 var lane: Enums.Lane
 var should_split = true # if set to true, will spawn 2 more of itself
 var should_split_into_neighbouring_lanes = false # if false, spawns new copies in own lane
+var speed = 250
 
 var direction: Vector2:
 	get: return direction
@@ -34,4 +35,4 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	super(delta)
-	position += direction * 250 * delta
+	position += direction * speed * delta
