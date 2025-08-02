@@ -4,7 +4,7 @@ extends Node2D
 @export var enemy_container: Node
 
 func _ready() -> void:
-	EventBus.request_spawn_projectile.connect(_on_request_spawn_projectile)
+	EventBus.request_add_projectile_to_scene.connect(_on_request_spawn_projectile)
 		
 	EventBus.wave_complete.connect(handle_wave_complete)
 	EventBus.request_next_wave.connect(request_next_wave)
@@ -30,10 +30,7 @@ func request_next_wave():
 
 
 func _on_request_spawn_projectile(
-		projectile_scene: PackedScene,
-		spawn_position: Vector2,
-		direction: Vector2) -> void:
-	var projectile: Bullet = projectile_scene.instantiate()
+		projectile: Projectile,
+		spawn_position: Vector2) -> void:
 	projectile.global_position = spawn_position
-	projectile.direction = direction
 	projectile_container.add_child(projectile)

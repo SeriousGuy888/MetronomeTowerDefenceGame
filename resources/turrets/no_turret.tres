@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TurretType" load_steps=5 format=3 uid="uid://g2d5dkolth8a"]
 
-[ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/turret_type.gd" id="1_vbats"]
+[ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/types/turret_type.gd" id="1_vbats"]
 [ext_resource type="Resource" uid="uid://drbvyptfyr5cc" path="res://resources/turrets/tom_drum.tres" id="2_jwoxc"]
 [ext_resource type="Resource" uid="uid://br1ugit7tpkbs" path="res://resources/turrets/tambourine.tres" id="3_y3nad"]
 [ext_resource type="Resource" uid="uid://bi7ql5c8wquxi" path="res://resources/turrets/triangle.tres" id="4_bjwog"]

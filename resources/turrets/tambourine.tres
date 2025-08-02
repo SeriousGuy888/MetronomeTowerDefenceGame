@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TurretType" load_steps=5 format=3 uid="uid://br1ugit7tpkbs"]
 
-[ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/turret_type.gd" id="1_jp5fj"]
-[ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/bullet.tscn" id="1_rfkgb"]
+[ext_resource type="Script" uid="uid://8jr1l0e633vy" path="res://scenes/turrets/types/turret_type.gd" id="1_jp5fj"]
+[ext_resource type="PackedScene" uid="uid://byroj6xh5oax4" path="res://scenes/projectiles/drumbeat.tscn" id="1_rfkgb"]
 [ext_resource type="Texture2D" uid="uid://1h7g7tq40dj8" path="res://assets/turrets/tambourine.png" id="3_fghyg"]
 [ext_resource type="Resource" uid="uid://de7w7wexahke" path="res://resources/turrets/hi_hat.tres" id="4_5f63b"]
 

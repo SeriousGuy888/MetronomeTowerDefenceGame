@@ -1,18 +1,14 @@
-class_name Bullet extends Area2D
+class_name DrumBeat extends Projectile
 
-@onready var sprite: Sprite2D = $sprite
+@export var speed = 250
+@export var pierces_remaining = 0
 
 var direction: Vector2:
-	get:
-		return direction
-	set(value):
-		direction = value.normalized()
-
-func _ready() -> void:
-	pass
+	get: return direction
+	set(value): direction = value.normalized()
 
 func _process(delta) -> void:
-	position += direction * 250 * delta
+	position += direction * speed * delta
 	look_at(position + direction)
 	# temporary way to delete bullets once they're far away
 	if abs(position.x) > 2000 or abs(position.y) > 2000:
@@ -21,4 +17,6 @@ func _process(delta) -> void:
 func _on_area_entered(area):
 	if area is Enemy:
 		area.take_damage(1)
-		queue_free()
+		pierces_remaining -= 1
+		if pierces_remaining < 0:
+			queue_free()
