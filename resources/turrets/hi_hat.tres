@@ -9,6 +9,8 @@
 [resource]
 script = ExtResource("2_lnjdb")
 projectile_scene = ExtResource("1_8emxp")
+damage_type = 0
+base_damage = 1
 texture = ExtResource("3_uqipc")
 name = "Hi-Hat"
 price = 1

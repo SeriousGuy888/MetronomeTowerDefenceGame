@@ -9,6 +9,8 @@
 [resource]
 script = ExtResource("2_klkki")
 projectile_scene = ExtResource("1_jexxr")
+damage_type = 0
+base_damage = 1
 texture = ExtResource("3_gqwmr")
 name = "Triangle"
 price = 1
