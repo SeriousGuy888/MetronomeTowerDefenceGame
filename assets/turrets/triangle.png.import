@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxsw70cq7jww4"
-path="res://.godot/imported/drum_turret.png-0416d290997318401b176aa973f4addd.ctex"
+uid="uid://0co2c5ewhihk"
+path="res://.godot/imported/triangle.png-37c418e358f5513d87c30b8784dc9f12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/drum_turret.png"
-dest_files=["res://.godot/imported/drum_turret.png-0416d290997318401b176aa973f4addd.ctex"]
+source_file="res://assets/turrets/triangle.png"
+dest_files=["res://.godot/imported/triangle.png-37c418e358f5513d87c30b8784dc9f12.ctex"]
 
 [params]
 

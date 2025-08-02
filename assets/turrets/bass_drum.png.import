@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0wb7sg25conk"
-path="res://.godot/imported/guitar_turret.png-c14f36a5a007ed1a6b99f7552f9394aa.ctex"
+uid="uid://cb8i4mafvg8pg"
+path="res://.godot/imported/bass_drum.png-d28a9d810a1d88a28522fa2bee0382ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/guitar_turret.png"
-dest_files=["res://.godot/imported/guitar_turret.png-c14f36a5a007ed1a6b99f7552f9394aa.ctex"]
+source_file="res://assets/turrets/bass_drum.png"
+dest_files=["res://.godot/imported/bass_drum.png-d28a9d810a1d88a28522fa2bee0382ca.ctex"]
 
 [params]
 
