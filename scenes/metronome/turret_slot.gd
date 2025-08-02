@@ -11,11 +11,7 @@ var turret: Turret = null:
 
 # How this slot is oriented in relation to the center of the metronome.
 # Also determines which way its projectiles will fire.
-var direction: Vector2:
-	get:
-		return direction
-	set(value):
-		direction = value.normalized()
+var lane: Enums.Lane
 
 func _ready():
 	place_turret(TURRET_SCENE, NO_TURRET)
@@ -36,7 +32,7 @@ func _remove_turret():
 
 func fire():
 	if turret:
-		turret.fire(direction)
+		turret.fire(lane)
 
 
 func _on_texture_button_button_up() -> void:

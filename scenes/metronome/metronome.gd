@@ -25,6 +25,6 @@ func _on_timer_timeout() -> void:
 	timer.start()
 
 
-func _on_playhead_angle_passed(angle_in_degrees: Variant) -> void:
+func _on_playhead_angle_passed(lane: Enums.Lane) -> void:
 	# angle is given as "degrees clockwise from north"
-	turret_slot_manager.fire(angle_in_degrees)
+	turret_slot_manager.fire(lane)

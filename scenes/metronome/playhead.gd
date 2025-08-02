@@ -1,8 +1,6 @@
 extends Sprite2D
 
-@export var angles_to_watch_degrees: Array[int]
-
-signal angle_passed(angle_in_degrees)
+signal angle_passed(angle_in_degrees: Enums.Lane)
 
 var beats_per_minute
 var beats_per_second
@@ -30,7 +28,7 @@ func _process(delta):
 	if new_angle < old_angle:
 		old_angle -= 360 # to deal with when the playhead crosses 0°
 	
-	for watched_angle in angles_to_watch_degrees:
+	for watched_angle in Enums.Lane.values():
 		if old_angle < watched_angle and watched_angle <= new_angle:
 			# rotate to be number of degrees clockwise from north
 			angle_passed.emit((watched_angle + 270) % 360)

@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 	$Sprite.texture = turret_type.texture
 
-func fire(direction: Vector2):
-	var projectile = turret_type.create_projectile_instance(direction)
+func fire(lane: Enums.Lane):
+	var projectile = turret_type.create_projectile_instance(lane)
 	if projectile:
 		EventBus.request_add_projectile_to_scene.emit(projectile, global_position)

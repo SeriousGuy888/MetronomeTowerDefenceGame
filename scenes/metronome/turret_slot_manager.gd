@@ -1,9 +1,6 @@
 extends Node
 
 @export var turret_slot_scene: PackedScene
-@export var angles_to_place_turrets_at: Array[int] = [
-	0, 45, 90, 135, 180, 225, 270, 315
-]
 @export var radius = 100
 
 var slots: Dictionary = {}
@@ -12,18 +9,18 @@ func _ready():
 	spawn_turret_slots()
 
 func spawn_turret_slots():
-	for angle_deg in angles_to_place_turrets_at:
+	for angle_deg in Enums.Lane.values():
 		var angle = Vector2.from_angle(deg_to_rad(angle_deg))
 		var slot: Node2D = turret_slot_scene.instantiate()
 		slot.position = angle * radius
-		slot.direction = angle
+		slot.lane = angle_deg
 		add_child(slot)
 		slots[angle_deg] = slot
 
-func fire(angle_deg: int):
-	var slot = slots.get(angle_deg)
+func fire(lane: Enums.Lane):
+	var slot = slots.get(lane)
 	if !slot:
-		push_warning("Attempted to fire turret in slot at ", angle_deg, "degrees, but no such slot exists.")
+		push_warning("Attempted to fire turret in lane ", lane, "°, but no such slot exists.")
 		return
 	
 	slot.fire()

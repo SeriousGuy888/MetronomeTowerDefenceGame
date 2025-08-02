@@ -3,7 +3,6 @@ extends Node
 
 @export var enemy_container: Node
 @export var spawn_radius: float = 500.0
-@export var lane_angles_degrees = [0, 45, 90, 135, 180, 225, 270, 315]
 
 func _ready():
 	EventBus.request_spawn_enemy.connect(_on_request_spawn_enemy)
