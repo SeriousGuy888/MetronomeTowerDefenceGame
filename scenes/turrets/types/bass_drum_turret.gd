@@ -6,4 +6,6 @@ func _setup_projectile_instance(direction: Vector2) -> DrumBeat:
 	projectile.direction = direction
 	projectile.speed = 100
 	projectile.pierces_remaining = 999999
+	if projectile.has_method("set_damage_info"):
+		projectile.set_damage_info(base_damage, damage_type)
 	return projectile

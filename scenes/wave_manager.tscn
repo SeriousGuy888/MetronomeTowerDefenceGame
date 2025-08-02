@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bapj5455wsvny"]
+[gd_scene load_steps=7 format=3 uid="uid://bapj5455wsvny"]
 
 [ext_resource type="Script" uid="uid://27dlosx1pmt7" path="res://scenes/wave_manager.gd" id="1_8fe1o"]
+[ext_resource type="Resource" uid="uid://wave_level_1" path="res://resources/waves/wave_level_1.tres" id="2_wave1"]
+[ext_resource type="Resource" uid="uid://wave_level_2" path="res://resources/waves/wave_level_2.tres" id="3_wave2"]
+[ext_resource type="Resource" uid="uid://wave_level_3" path="res://resources/waves/wave_level_3.tres" id="4_wave3"]
+[ext_resource type="Resource" uid="uid://wave_level_4" path="res://resources/waves/wave_level_4.tres" id="5_wave4"]
+[ext_resource type="Resource" uid="uid://wave_level_5" path="res://resources/waves/wave_level_5.tres" id="6_wave5"]
 
 [node name="WaveManager" type="Node"]
 script = ExtResource("1_8fe1o")
+waves = Array[Resource]([ExtResource("2_wave1"), ExtResource("3_wave2"), ExtResource("4_wave3"), ExtResource("5_wave4"), ExtResource("6_wave5")])

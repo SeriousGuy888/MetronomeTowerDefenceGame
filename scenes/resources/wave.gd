@@ -38,3 +38,10 @@ func get_next_enemy_scene(enemies_spawned_by_type: Dictionary) -> PackedScene:
 	
 	# Fallback to first available
 	return available_types[0].enemy_scene
+
+# Get the enemy type for a given enemy scene
+func get_enemy_type_for_scene(enemy_scene: PackedScene) -> Enums.EnemyType:
+	for entry in enemy_types:
+		if entry.enemy_scene == enemy_scene:
+			return entry.enemy_type
+	return Enums.EnemyType.BASIC # Default fallback

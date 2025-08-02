@@ -1,15 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://csiyyfb2afljr"]
+[gd_scene load_steps=7 format=3 uid="uid://csiyyfb2afljr"]
 
 [ext_resource type="Script" uid="uid://x3fgsikd2nis" path="res://scenes/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://o3wpudmwbq2j" path="res://scenes/metronome/metronome.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://bs3xqphs5c1b5" path="res://assets/map background.png" id="2_85g3d"]
 [ext_resource type="Script" uid="uid://bfwt3ofkgvu26" path="res://scenes/monster_spawner.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bapj5455wsvny" path="res://scenes/wave_manager.tscn" id="3_tbgi4"]
-[ext_resource type="Script" uid="uid://nhkfmg7rw0ad" path="res://scenes/resources/wave.gd" id="4_o6xl0"]
-[ext_resource type="Resource" uid="uid://c8xj3vq2nkf5w" path="res://resources/waves/single_enemy_wave.tres" id="6_choun"]
-[ext_resource type="Resource" uid="uid://bqxhr7vr2ysja" path="res://resources/waves/mixed_wave_example.tres" id="7_ya4ey"]
-[ext_resource type="Resource" uid="uid://ckq3r8vs5ylma" path="res://resources/waves/advanced_mixed_wave.tres" id="8_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://btvlm8jbmbyso" path="res://scenes/ui/ui.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://btvlm8jbmbyso" path="res://scenes/ui/ui.tscn" id="11_ui"]
 
 [node name="MainScene" type="Node2D" node_paths=PackedStringArray("projectile_container", "enemy_container")]
 script = ExtResource("1_0xm2m")
@@ -28,10 +24,9 @@ texture = ExtResource("2_85g3d")
 [node name="EnemyContainer" type="Node" parent="."]
 
 [node name="WaveManager" parent="." instance=ExtResource("3_tbgi4")]
-waves = Array[ExtResource("4_o6xl0")]([ExtResource("6_choun"), ExtResource("7_ya4ey"), ExtResource("8_eb6dy")])
 
 [node name="MonsterSpawner" type="Node" parent="." node_paths=PackedStringArray("enemy_container")]
 script = ExtResource("3_sugp2")
 enemy_container = NodePath("../EnemyContainer")
 
-[node name="UI" parent="." instance=ExtResource("8_tipki")]
+[node name="UI" parent="." instance=ExtResource("11_ui")]

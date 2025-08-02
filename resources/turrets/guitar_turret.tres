@@ -7,7 +7,9 @@
 [resource]
 script = ExtResource("2_um8rh")
 projectile_scene = ExtResource("1_l7f1v")
+damage_type = 2
+base_damage = 2
 texture = ExtResource("3_426vn")
-name = "Unnamed Turret"
+name = "Guitar Turret"
 price = 1
 metadata/_custom_type_script = "uid://8jr1l0e633vy"

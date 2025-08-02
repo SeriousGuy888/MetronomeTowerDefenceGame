@@ -5,7 +5,7 @@ extends Node
 var is_spawning = false
 var enemies_spawned_in_wave = 0
 var enemies_remaining = 0
-var enemies_spawned_by_type: Dictionary = {}  # Track spawned count per enemy type
+var enemies_spawned_by_type: Dictionary = {} # Track spawned count per enemy type
 
 @onready var spawn_timer = Timer.new()
 
@@ -28,7 +28,7 @@ func spawn_wave(current_wave_index: int):
 	print("Starting wave ", current_wave_index)
 	enemies_spawned_in_wave = 0
 	enemies_remaining = 0
-	enemies_spawned_by_type.clear()  # Reset enemy type tracking
+	enemies_spawned_by_type.clear() # Reset enemy type tracking
 	is_spawning = true
 	var current_wave = waves[current_wave_index]
 	spawn_timer.wait_time = current_wave.time_between_spawns
@@ -50,7 +50,12 @@ func _on_spawn_timer_timeout():
 		
 		if enemy_scene != null:
 			print("Spawning enemy ", enemies_spawned_in_wave + 1, " of ", total_enemies, " in wave ", current_wave_index)
-			EventBus.request_spawn_enemy.emit(enemy_scene, current_wave_index)
+			
+			# Get the enemy type for this scene
+			var enemy_type = current_wave.get_enemy_type_for_scene(enemy_scene)
+			
+			# Use the new enemy type spawning method
+			EventBus.request_spawn_enemy_type.emit(enemy_type, current_wave_index)
 			
 			# Update spawn tracking
 			enemies_spawned_in_wave += 1
