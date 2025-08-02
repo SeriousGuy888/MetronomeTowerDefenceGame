@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://bg2kc8mnxwyv7"]
+
+[ext_resource type="Script" uid="uid://dm2lajmjgvaiv" path="res://scenes/resources/enemy_type.gd" id="1_basic"]
+[ext_resource type="Texture2D" uid="uid://4uffg68amuhn" path="res://assets/enemy.png" id="2_basic"]
+
+[resource]
+script = ExtResource("1_basic")
+enemy_type = 0
+texture = ExtResource("2_basic")
+name = "Basic Enemy"
+base_health = 10
+base_speed = 50.0
+coins_dropped = 5
+is_boss = false
+percussion_resistance = 1.0
+wind_resistance = 1.0
+string_resistance = 1.0
+cymbal_resistance = 1.0
+special_resistance = 1.0

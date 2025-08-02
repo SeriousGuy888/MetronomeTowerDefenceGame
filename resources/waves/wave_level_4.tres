@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=9 format=3 uid="uid://bfog62tbc87ce"]
+
+[ext_resource type="Script" uid="uid://nhkfmg7rw0ad" path="res://scenes/resources/wave.gd" id="1_wave"]
+[ext_resource type="PackedScene" uid="uid://b8mxl5n7vqbkp" path="res://scenes/enemies/enemy.tscn" id="2_enemy"]
+[ext_resource type="Script" uid="uid://dhcvie7sn78np" path="res://scenes/resources/enemy_wave_entry.gd" id="3_entry"]
+
+[sub_resource type="Resource" id="basic_enemies"]
+script = ExtResource("3_entry")
+enemy_scene = ExtResource("2_enemy")
+enemy_type = 0
+count = 6
+spawn_weight = 1.5
+
+[sub_resource type="Resource" id="fast_enemies"]
+script = ExtResource("3_entry")
+enemy_scene = ExtResource("2_enemy")
+enemy_type = 1
+count = 8
+spawn_weight = 2.0
+
+[sub_resource type="Resource" id="tank_enemies"]
+script = ExtResource("3_entry")
+enemy_scene = ExtResource("2_enemy")
+enemy_type = 2
+count = 4
+spawn_weight = 1.2
+
+[sub_resource type="Resource" id="armored_enemies"]
+script = ExtResource("3_entry")
+enemy_scene = ExtResource("2_enemy")
+enemy_type = 3
+count = 3
+spawn_weight = 1.0
+
+[sub_resource type="Resource" id="flying_enemies"]
+script = ExtResource("3_entry")
+enemy_scene = ExtResource("2_enemy")
+enemy_type = 4
+count = 4
+spawn_weight = 1.8
+
+[resource]
+script = ExtResource("1_wave")
+time_between_spawns = 0.6
+enemy_types = Array[ExtResource("3_entry")]([SubResource("basic_enemies"), SubResource("fast_enemies"), SubResource("tank_enemies"), SubResource("armored_enemies"), SubResource("flying_enemies")])

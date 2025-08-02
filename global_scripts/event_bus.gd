@@ -6,7 +6,7 @@ signal request_add_projectile_to_scene(
 	projectile_instance: Projectile,
 	spawn_position: Vector2) # global position
 signal request_spawn_shiny_frisbee_in_lane(lane: Enums.Lane)
-signal request_spawn_enemy(enemy_scene: PackedScene, wave_index: int)
+signal request_spawn_enemy_type(enemy_type: Enums.EnemyType, wave_index: int)
 
 signal request_select_turret_slot(turret_slot: TurretSlot)
 signal make_turret_purchase(turret_type: TurretType)

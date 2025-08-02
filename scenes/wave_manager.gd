@@ -5,6 +5,7 @@ extends Node
 var is_spawning = false
 var enemies_spawned_in_wave = 0
 var enemies_remaining = 0
+var enemies_spawned_by_type: Dictionary = {} # Track spawned count per enemy type
 
 @onready var spawn_timer = Timer.new()
 
@@ -27,6 +28,7 @@ func spawn_wave(current_wave_index: int):
 	print("Starting wave ", current_wave_index)
 	enemies_spawned_in_wave = 0
 	enemies_remaining = 0
+	enemies_spawned_by_type.clear() # Reset enemy type tracking
 	is_spawning = true
 	var current_wave = waves[current_wave_index]
 	spawn_timer.wait_time = current_wave.time_between_spawns
@@ -40,12 +42,34 @@ func _on_spawn_timer_timeout():
 
 	# This line is now safe, as current_wave_index will not be out of bounds.
 	var current_wave = waves[current_wave_index]
-	if enemies_spawned_in_wave < current_wave.enemies_in_wave:
-		print("Spawning enemy ", enemies_spawned_in_wave + 1, " of ", current_wave.enemies_in_wave, " in wave ", current_wave_index)
-		EventBus.request_spawn_enemy.emit(current_wave.enemy_scene, current_wave_index)
-		enemies_spawned_in_wave += 1
-		enemies_remaining += 1
-		spawn_timer.start()
+	var total_enemies = current_wave.get_total_enemies()
+	
+	if enemies_spawned_in_wave < total_enemies:
+		# Get the next enemy to spawn based on the wave configuration
+		var enemy_scene = current_wave.get_next_enemy_scene(enemies_spawned_by_type)
+		
+		if enemy_scene != null:
+			print("Spawning enemy ", enemies_spawned_in_wave + 1, " of ", total_enemies, " in wave ", current_wave_index)
+			
+			# Get the enemy type for this scene
+			var enemy_type = current_wave.get_enemy_type_for_scene(enemy_scene)
+			
+			# Use the new enemy type spawning method
+			EventBus.request_spawn_enemy_type.emit(enemy_type, current_wave_index)
+			
+			# Update spawn tracking
+			enemies_spawned_in_wave += 1
+			enemies_remaining += 1
+			
+			# Track enemy type spawning
+			var current_count = enemies_spawned_by_type.get(enemy_scene, 0)
+			enemies_spawned_by_type[enemy_scene] = current_count + 1
+			
+			spawn_timer.start()
+		else:
+			print("No more enemies to spawn in wave ", current_wave_index)
+			is_spawning = false
+			spawn_timer.stop()
 	else:
 		print("Wave ", current_wave_index, " done spawning.")
 		is_spawning = false

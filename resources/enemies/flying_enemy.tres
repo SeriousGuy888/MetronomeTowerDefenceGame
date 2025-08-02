@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://fj6ng2sq01vb"]
+
+[ext_resource type="Script" uid="uid://dm2lajmjgvaiv" path="res://scenes/resources/enemy_type.gd" id="1_flying"]
+[ext_resource type="Texture2D" uid="uid://4uffg68amuhn" path="res://assets/enemy.png" id="2_flying"]
+
+[resource]
+script = ExtResource("1_flying")
+enemy_type = 4
+texture = ExtResource("2_flying")
+name = "Flying Enemy"
+base_health = 8
+base_speed = 75.0
+coins_dropped = 10
+is_boss = false
+percussion_resistance = 1.4
+wind_resistance = 0.5
+string_resistance = 1.2
+cymbal_resistance = 1.1
+special_resistance = 0.9

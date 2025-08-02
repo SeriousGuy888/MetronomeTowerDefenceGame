@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://gk7oh3tr2wc"]
+
+[ext_resource type="Script" uid="uid://dm2lajmjgvaiv" path="res://scenes/resources/enemy_type.gd" id="1_boss"]
+[ext_resource type="Texture2D" uid="uid://4uffg68amuhn" path="res://assets/enemy.png" id="2_boss"]
+
+[resource]
+script = ExtResource("1_boss")
+enemy_type = 5
+texture = ExtResource("2_boss")
+name = "Boss Enemy"
+base_health = 100
+base_speed = 30.0
+coins_dropped = 50
+is_boss = true
+percussion_resistance = 0.8
+wind_resistance = 0.9
+string_resistance = 0.85
+cymbal_resistance = 0.75
+special_resistance = 0.7
