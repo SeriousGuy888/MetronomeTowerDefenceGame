@@ -20,6 +20,5 @@ func _process(delta) -> void:
 
 func _on_area_entered(area):
 	if area is Enemy:
-		print("aa")
 		area.take_damage(1)
 		queue_free()
