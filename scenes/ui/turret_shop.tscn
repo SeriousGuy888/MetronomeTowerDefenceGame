@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtvylxxc53dxr"]
+[gd_scene load_steps=8 format=3 uid="uid://dtvylxxc53dxr"]
 
 [ext_resource type="Texture2D" uid="uid://c012ulqfmlhv7" path="res://assets/close_button.png" id="1_bh4w6"]
 [ext_resource type="PackedScene" uid="uid://xmxcbety6uy6" path="res://scenes/ui/turret_shop_item.tscn" id="1_t4ced"]
+[ext_resource type="Resource" uid="uid://drbvyptfyr5cc" path="res://resources/turrets/tom_drum.tres" id="3_8vvec"]
+[ext_resource type="Resource" uid="uid://br1ugit7tpkbs" path="res://resources/turrets/tambourine.tres" id="4_kn5uv"]
+[ext_resource type="Resource" uid="uid://bi7ql5c8wquxi" path="res://resources/turrets/triangle.tres" id="5_eaj8y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
 bg_color = Color(1, 1, 1, 1)
@@ -10,9 +13,10 @@ corner_radius_top_right = 10
 expand_margin_left = 8.0
 expand_margin_top = 8.0
 expand_margin_right = 8.0
+expand_margin_bottom = 8.0
 
 [sub_resource type="GDScript" id="GDScript_t4ced"]
-script/source = "extends Panel
+script/source = "extends PanelContainer
 
 const TURRET = preload(\"res://scenes/turrets/turret.tscn\")
 @export var turret_ids = {
@@ -42,17 +46,12 @@ func _ready() -> void:
 	EventBus.request_select_turret_slot.connect(func(new_slot): selected_slot = new_slot)
 	EventBus.make_turret_purchase.connect(_on_turret_purchase)
 
-func _on_turret_purchase(item_id: String) -> void:
+func _on_turret_purchase(turret_type: TurretType) -> void:
 	if !selected_slot:
 		return
 	
-	if item_id == \"none\":
+	if turret_type == null:
 		selected_slot.remove_turret()
-		return
-	
-	var turret_type = turret_ids.get(item_id)
-	if !turret_type:
-		push_warning(\"Attempted to purchase turret of id \", item_id, \", but no such turret exists.\")
 		return
 	
 	selected_slot.place_turret(TURRET, turret_type)
@@ -61,19 +60,17 @@ func _on_close_button_pressed() -> void:
 	selected_slot = null
 "
 
-[node name="TurretShop" type="Panel"]
-offset_right = 183.0
-offset_bottom = 201.0
+[node name="TurretShop" type="PanelContainer"]
+offset_right = 392.0
+offset_bottom = 172.0
+pivot_offset = Vector2(-1, 0)
+size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_jyhfs")
 script = SubResource("GDScript_t4ced")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_vertical = 0
 
 [node name="TitleBar" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -91,25 +88,20 @@ size_flags_horizontal = 3
 layout_mode = 2
 texture_normal = ExtResource("1_bh4w6")
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="VBoxContainer" type="BoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="ItemNone" parent="VBoxContainer" instance=ExtResource("1_t4ced")]
+[node name="ItemNone" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
-id = "none"
-title = "None"
-price = 0
+turret_type = ExtResource("3_8vvec")
 
-[node name="ItemDrum" parent="VBoxContainer" instance=ExtResource("1_t4ced")]
+[node name="ItemDrum" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
-id = "tom_drum"
-title = "Tom Drum"
-price = 2
+turret_type = ExtResource("4_kn5uv")
 
-[node name="ItemGuitar" parent="VBoxContainer" instance=ExtResource("1_t4ced")]
+[node name="ItemGuitar" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
-id = "triangle"
-title = "Triangle"
-price = 5
+turret_type = ExtResource("5_eaj8y")
 
 [connection signal="pressed" from="VBoxContainer/TitleBar/CloseButton" to="." method="_on_close_button_pressed"]
