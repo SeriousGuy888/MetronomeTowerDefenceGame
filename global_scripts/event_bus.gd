@@ -10,6 +10,7 @@ signal request_spawn_enemy(enemy_scene: PackedScene, wave_index: int)
 
 signal request_select_turret_slot(turret_slot: TurretSlot)
 signal make_turret_purchase(turret_type: TurretType)
+signal turret_slot_turret_updated(turret_slot: TurretSlot)
 
 signal request_add_coins(amount: int)
 

@@ -11,5 +11,5 @@ projectile_scene = ExtResource("1_oyk60")
 texture = ExtResource("3_woevn")
 name = "Tom Drum"
 price = 1
-upgrades_to = ExtResource("4_oplx7")
+upgrades_to = Array[ExtResource("2_oplx7")]([ExtResource("4_oplx7")])
 metadata/_custom_type_script = "uid://8jr1l0e633vy"

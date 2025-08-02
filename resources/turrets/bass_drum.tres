@@ -10,4 +10,5 @@ projectile_scene = ExtResource("1_rfkgb")
 texture = ExtResource("3_uepft")
 name = "Bass Drum"
 price = 1
+upgrades_to = Array[ExtResource("1_jp5fj")]([])
 metadata/_custom_type_script = "uid://8jr1l0e633vy"

@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dtvylxxc53dxr"]
 
 [ext_resource type="Texture2D" uid="uid://c012ulqfmlhv7" path="res://assets/close_button.png" id="1_bh4w6"]
+[ext_resource type="Script" uid="uid://deckbofx48m5k" path="res://scenes/ui/turret_shop.gd" id="1_kn5uv"]
 [ext_resource type="PackedScene" uid="uid://xmxcbety6uy6" path="res://scenes/ui/turret_shop_item.tscn" id="1_t4ced"]
 [ext_resource type="Resource" uid="uid://drbvyptfyr5cc" path="res://resources/turrets/tom_drum.tres" id="3_8vvec"]
 [ext_resource type="Resource" uid="uid://br1ugit7tpkbs" path="res://resources/turrets/tambourine.tres" id="4_kn5uv"]
@@ -15,58 +16,13 @@ expand_margin_top = 8.0
 expand_margin_right = 8.0
 expand_margin_bottom = 8.0
 
-[sub_resource type="GDScript" id="GDScript_t4ced"]
-script/source = "extends PanelContainer
-
-const TURRET = preload(\"res://scenes/turrets/turret.tscn\")
-@export var turret_ids = {
-	\"bass_drum\": preload(\"res://resources/turrets/bass_drum.tres\"),
-	\"cowbell\": preload(\"res://resources/turrets/cowbell.tres\"),
-	\"crash_cymbal\": preload(\"res://resources/turrets/crash_cymbal.tres\"),
-	\"guitar_turret\": preload(\"res://resources/turrets/guitar_turret.tres\"),
-	\"hi_hat\": preload(\"res://resources/turrets/hi_hat.tres\"),
-	\"snare_drum\": preload(\"res://resources/turrets/snare_drum.tres\"),
-	\"tambourine\": preload(\"res://resources/turrets/tambourine.tres\"),
-	\"tom_drum\": preload(\"res://resources/turrets/tom_drum.tres\"),
-	\"triangle\": preload(\"res://resources/turrets/triangle.tres\"),
-}
-
-# When a player clicks on a turret slot, the shop should change to reflect
-# the current state of the selected slot.
-# If null, the shop should hide itself.
-var selected_slot: TurretSlot:
-	get:
-		return selected_slot
-	set(new_slot):
-		selected_slot = new_slot
-		visible = !!new_slot
-
-func _ready() -> void:
-	selected_slot = null
-	EventBus.request_select_turret_slot.connect(func(new_slot): selected_slot = new_slot)
-	EventBus.make_turret_purchase.connect(_on_turret_purchase)
-
-func _on_turret_purchase(turret_type: TurretType) -> void:
-	if !selected_slot:
-		return
-	
-	if turret_type == null:
-		selected_slot.remove_turret()
-		return
-	
-	selected_slot.place_turret(TURRET, turret_type)
-
-func _on_close_button_pressed() -> void:
-	selected_slot = null
-"
-
 [node name="TurretShop" type="PanelContainer"]
 offset_right = 392.0
 offset_bottom = 172.0
 pivot_offset = Vector2(-1, 0)
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_jyhfs")
-script = SubResource("GDScript_t4ced")
+script = ExtResource("1_kn5uv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -88,19 +44,20 @@ size_flags_horizontal = 3
 layout_mode = 2
 texture_normal = ExtResource("1_bh4w6")
 
-[node name="VBoxContainer" type="BoxContainer" parent="VBoxContainer"]
+[node name="OfferingsContainer" type="BoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ItemNone" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_t4ced")]
+[node name="Item1" parent="VBoxContainer/OfferingsContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
 turret_type = ExtResource("3_8vvec")
 
-[node name="ItemDrum" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_t4ced")]
+[node name="Item2" parent="VBoxContainer/OfferingsContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
 turret_type = ExtResource("4_kn5uv")
 
-[node name="ItemGuitar" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_t4ced")]
+[node name="Item3" parent="VBoxContainer/OfferingsContainer" instance=ExtResource("1_t4ced")]
 layout_mode = 2
 turret_type = ExtResource("5_eaj8y")
 

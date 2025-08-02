@@ -6,4 +6,4 @@ extends Resource
 @export var name: String = "Unnamed Turret"
 @export var price: int = 1
 
-@export var upgrades_to: TurretType
+@export var upgrades_to: Array[TurretType]

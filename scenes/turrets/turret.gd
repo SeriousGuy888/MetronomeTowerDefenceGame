@@ -10,4 +10,5 @@ func _ready() -> void:
 	$Sprite.texture = turret_type.texture
 
 func fire(direction: Vector2):
-	EventBus.request_spawn_projectile.emit(turret_type.projectile_scene, global_position, direction)
+	if turret_type.projectile_scene:
+		EventBus.request_spawn_projectile.emit(turret_type.projectile_scene, global_position, direction)

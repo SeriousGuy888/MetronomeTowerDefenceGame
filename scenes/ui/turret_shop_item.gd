@@ -1,4 +1,5 @@
 @tool
+class_name TurretShopItem
 extends Panel
 
 @onready var picture_rect: TextureRect = %Picture
