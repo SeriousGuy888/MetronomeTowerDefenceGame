@@ -1,7 +1,7 @@
 extends Node
 
 @export var turret_slot_scene: PackedScene
-@export var radius = 100
+@export var radius = 86
 
 var slots: Dictionary = {}
 
