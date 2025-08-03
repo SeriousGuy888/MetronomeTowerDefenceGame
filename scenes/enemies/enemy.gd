@@ -86,7 +86,8 @@ func set_health_bar() -> void:
 
 func _process(delta):
 	var direction_to_center = global_position.direction_to(Vector2.ZERO)
-	position += direction_to_center * speed * delta
+	if PlaythroughManager.game_state == Enums.GameState.BATTLE:
+		position += direction_to_center * speed * delta
 
 func take_damage(base_damage: int, turret_damage_type: Enums.TurretDamageType = Enums.TurretDamageType.PERCUSSION):
 	if !enemy_type:
