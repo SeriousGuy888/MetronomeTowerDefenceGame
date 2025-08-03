@@ -17,7 +17,7 @@ var current_wave = 0:
 	set(new_wave):
 		current_wave = new_wave
 		EventBus.current_wave_updated.emit(current_wave)
-var coins: int = 10:
+var coins: int = 5:
 	get: return coins
 	set(new_amount):
 		coins = new_amount

@@ -7,7 +7,7 @@ func _ready() -> void:
 	EventBus.game_state_updated.connect(handle_game_state_change)
 
 func update_wave_counter(new_wave: int):
-	%CurrentWave.text = "Wave " + str(new_wave)
+	%CurrentWave.text = "Wave " + str(new_wave + 1)
 
 func handle_game_state_change(new_state: Enums.GameState):
 	print(new_state)

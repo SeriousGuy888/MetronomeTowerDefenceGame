@@ -11,10 +11,10 @@
 script = ExtResource("2_lnjdb")
 projectile_scene = ExtResource("1_8emxp")
 damage_type = 3
-base_damage = 3
+base_damage = 4
 texture = ExtResource("3_uqipc")
 name = "Hi-Hat"
-price = 1
+price = 6
 upgrades_to = Array[ExtResource("1_jp5fj")]([ExtResource("4_15d04")])
 sound_effect = ExtResource("3_lnjdb")
 metadata/_custom_type_script = "uid://8jr1l0e633vy"
