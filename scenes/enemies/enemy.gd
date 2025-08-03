@@ -9,6 +9,8 @@ var max_health: int
 var speed: float
 var coins_dropped: int
 
+var is_dead = false # prevent the death signal being called more than once
+
 func _ready():
 	# Initialize with default values first
 	max_health = 10
@@ -102,8 +104,9 @@ func take_damage(base_damage: int, turret_damage_type: Enums.TurretDamageType = 
 		die(true)
 
 func die(was_killed: bool):
-	if was_killed:
-		EventBus.request_add_coins.emit(coins_dropped)
-	if member_of_wave != null:
-		EventBus.enemy_from_wave_died.emit(member_of_wave)
+	if !is_dead:
+		if was_killed:
+			EventBus.request_add_coins.emit(coins_dropped)
+		if member_of_wave != null:
+			EventBus.enemy_from_wave_died.emit(member_of_wave)
 	queue_free()

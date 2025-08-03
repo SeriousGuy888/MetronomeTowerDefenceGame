@@ -27,6 +27,7 @@ var enemies_slain = 0
 func _ready() -> void:
 	EventBus.request_add_coins.connect(func(amount): coins += amount)
 	EventBus.restart_game.connect(restart_game)
+	EventBus.enemy_from_wave_died.connect(func(_wave: int): enemies_slain += 1)
 
 func start_game():
 	coins = 10
