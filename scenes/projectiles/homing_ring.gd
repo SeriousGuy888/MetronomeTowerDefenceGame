@@ -11,6 +11,7 @@ var direction: Vector2:
 var tick = 0
 
 func _ready() -> void:
+	super()
 	direction = Vector2.from_angle(deg_to_rad(lane))
 
 func _process(delta) -> void:

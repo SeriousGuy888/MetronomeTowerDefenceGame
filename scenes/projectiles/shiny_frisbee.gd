@@ -22,6 +22,7 @@ var direction: Vector2:
 	set(value): direction = value.normalized()
 
 func _ready() -> void:
+	super()
 	direction = Vector2.from_angle(deg_to_rad(lane))
 	
 	if should_split:

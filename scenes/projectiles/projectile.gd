@@ -9,6 +9,9 @@ func set_damage_info(new_damage: int, new_damage_type: Enums.TurretDamageType):
 	damage = new_damage
 	damage_type = new_damage_type
 
+func _ready():
+	EventBus.restart_game.connect(func(): queue_free())
+
 func _process(_delta) -> void:
 	delete_if_far_away()
 
