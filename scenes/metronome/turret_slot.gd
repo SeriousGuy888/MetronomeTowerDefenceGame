@@ -14,21 +14,21 @@ var turret: Turret = null:
 var lane: Enums.Lane
 
 func _ready():
-	place_turret(TURRET_SCENE, NO_TURRET)
+	remove_turret()
 	pass
 
 func place_turret(new_turret_scene: PackedScene, turret_type: TurretType):
-	_remove_turret()
+	if turret:
+		turret.queue_free()
+		turret = null
 	
 	var new_turret = new_turret_scene.instantiate()
 	new_turret.turret_type = turret_type
 	turret = new_turret
 	add_child(turret)
 	
-func _remove_turret():
-	if turret:
-		turret.queue_free()
-		turret = null
+func remove_turret():
+	place_turret(TURRET_SCENE, NO_TURRET)
 
 func fire():
 	if turret:

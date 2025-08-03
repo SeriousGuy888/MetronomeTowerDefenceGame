@@ -24,3 +24,8 @@ func fire(lane: Enums.Lane):
 		return
 	
 	slot.fire()
+
+func reset():
+	for lane in slots:
+		var slot: TurretSlot = slots[lane]
+		slot.remove_turret()

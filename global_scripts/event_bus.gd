@@ -2,6 +2,8 @@ extends Node
 
 @warning_ignore_start("unused_signal")
 
+signal restart_game
+
 signal request_add_projectile_to_scene(
 	projectile_instance: Projectile,
 	spawn_position: Vector2) # global position

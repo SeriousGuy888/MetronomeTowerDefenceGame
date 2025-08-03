@@ -30,13 +30,8 @@ texture = ExtResource("2_c6xhd")
 offset = Vector2(0, -0.488764)
 script = ExtResource("3_0nmwk")
 
-[node name="Timer" type="Timer" parent="."]
-process_callback = 0
-one_shot = true
-
 [node name="TurretSlotManager" type="Node2D" parent="."]
 script = ExtResource("5_v1fdi")
 turret_slot_scene = ExtResource("6_54fa4")
 
 [connection signal="angle_passed" from="playhead" to="." method="_on_playhead_angle_passed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

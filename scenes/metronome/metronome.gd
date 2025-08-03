@@ -4,13 +4,8 @@ class_name Metronome extends Area2D
 @export var beats_per_rotation = 4 # how many beats occur in a single rotation of the playhead
 @export var turret_slot_manager: Node2D
 
-@onready var timer: Timer = $Timer
-
-var tick = 0
-
 func _ready():
-	timer.wait_time = 60 / beats_per_minute
-	timer.start()
+	EventBus.restart_game.connect(reset)
 
 func _process(_delta: float) -> void:
 	# i don't know how to get the area_entered signal to work
@@ -20,9 +15,9 @@ func _process(_delta: float) -> void:
 			print("-1 life. new: ", PlaythroughManager.lives_remaining)
 			area.die(false)
 
-func _on_timer_timeout() -> void:
-	tick += 1
-	timer.start()
+func reset():
+	$TurretSlotManager.reset()
+	$playhead.reset()
 
 func get_turret_slot_global_position(lane: Enums.Lane):
 	var slot: TurretSlot = $TurretSlotManager.slots.get(lane)
