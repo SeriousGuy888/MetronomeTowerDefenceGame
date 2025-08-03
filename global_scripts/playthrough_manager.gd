@@ -23,6 +23,7 @@ var coins: int = 10:
 		coins = new_amount
 		EventBus.coin_balance_updated.emit(coins)
 var enemies_slain = 0
+var won = false
 
 func _ready() -> void:
 	EventBus.request_add_coins.connect(func(amount): coins += amount)
@@ -35,6 +36,7 @@ func start_game():
 	lives_remaining = 5
 	game_state = Enums.GameState.BATTLE
 	enemies_slain = 0
+	won = false
 
 func restart_game():
 	var existing_enemies = get_tree().get_nodes_in_group("enemies")

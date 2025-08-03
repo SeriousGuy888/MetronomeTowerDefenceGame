@@ -20,8 +20,11 @@ func handle_wave_complete(is_last_wave: bool):
 		# (i.e. don't do anything if the game is already over)
 		return
 	
+	print("is_last_wave=" + str(is_last_wave))
 	if is_last_wave:
-		print("game over - victory")
+		print("aaaa")
+		PlaythroughManager.won = true
+		PlaythroughManager.game_state = Enums.GameState.GAME_OVER
 		return
 	
 	print("wave ", PlaythroughManager.current_wave, " defeated. moving to build mode...")

@@ -83,6 +83,8 @@ func handle_wave_member_death(wave_index: int):
 	
 	enemies_remaining -= 1
 	
-	var is_last_wave = current_wave_index >= len(waves)
+	var is_last_wave = current_wave_index >= len(waves) - 1
 	if enemies_remaining <= 0 && !is_spawning:
+		print("curr wave = ", current_wave_index)
+		print("last wave done")
 		EventBus.wave_complete.emit(is_last_wave)

@@ -1,6 +1,7 @@
 extends PanelContainer
 
 @onready var game_over_stats: Label = $MarginContainer/VBoxContainer/GameOverStats
+@onready var game_over_title: Label = %GameOverTitle
 
 func _ready() -> void:
 	update_display(PlaythroughManager.game_state)
@@ -12,7 +13,7 @@ func update_display(game_state: Enums.GameState):
 	game_over_stats.text = \
 		"Survived to Wave " + str(PlaythroughManager.current_wave + 1) + ".\n" + \
 		str(PlaythroughManager.enemies_slain) + " enemies slain."
-
+	game_over_title.text = "You won!" if PlaythroughManager.won else "Game Over"
 
 func _on_play_again_pressed() -> void:
 	EventBus.restart_game.emit()
