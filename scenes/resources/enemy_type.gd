@@ -20,13 +20,13 @@ func get_damage_multiplier(turret_damage_type: Enums.TurretDamageType) -> float:
 	match turret_damage_type:
 		Enums.TurretDamageType.PERCUSSION:
 			return percussion_resistance
-		Enums.TurretDamageType.WIND:
-			return wind_resistance
-		Enums.TurretDamageType.STRING:
-			return string_resistance
+		#Enums.TurretDamageType.WIND:
+			#return wind_resistance
+		#Enums.TurretDamageType.STRING:
+			#return string_resistance
 		Enums.TurretDamageType.CYMBAL:
 			return cymbal_resistance
-		Enums.TurretDamageType.SPECIAL:
-			return special_resistance
+		#Enums.TurretDamageType.SPECIAL:
+			#return special_resistance
 		_:
 			return 1.0

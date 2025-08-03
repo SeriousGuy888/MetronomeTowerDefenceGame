@@ -28,8 +28,8 @@ enum EnemyType {
 
 enum TurretDamageType {
 	PERCUSSION = 0,  # Drums, strong vs basic enemies
-	WIND = 1,        # Flutes, strong vs flying enemies
-	STRING = 2,      # Guitar, balanced damage
+	#WIND = 1,        # Flutes, strong vs flying enemies
+	#STRING = 2,      # Guitar, balanced damage
 	CYMBAL = 3,      # Cymbals, strong vs armored enemies
-	SPECIAL = 4,     # Other instruments, unique effects
+	#SPECIAL = 4,     # Other instruments, unique effects
 }
