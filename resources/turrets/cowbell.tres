@@ -10,7 +10,7 @@
 script = ExtResource("2_8cvcf")
 projectile_scene = ExtResource("1_3hqq1")
 damage_type = 0
-base_damage = 1
+base_damage = 4
 texture = ExtResource("3_dbhuo")
 name = "Cowbell"
 price = 1

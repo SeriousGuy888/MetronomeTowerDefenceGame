@@ -10,7 +10,7 @@
 script = ExtResource("2_qwk1k")
 projectile_scene = ExtResource("1_gwtql")
 damage_type = 3
-base_damage = 2
+base_damage = 5
 texture = ExtResource("3_8gwto")
 name = "Crash Cymbal"
 price = 1

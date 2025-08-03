@@ -10,7 +10,7 @@
 script = ExtResource("2_o14r4")
 projectile_scene = ExtResource("1_uepft")
 damage_type = 0
-base_damage = 3
+base_damage = 8
 texture = ExtResource("3_uepft")
 name = "Bass Drum"
 price = 1
